@@ -11,6 +11,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "body-mass-index": "^1.0.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
