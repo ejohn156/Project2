@@ -1,5 +1,5 @@
 var db = require("../models");
-var caber = require("caber")
+var caber = require("caber");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/workouts", function(req, res) {

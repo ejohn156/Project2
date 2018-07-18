@@ -1,49 +1,40 @@
-require("dotenv").config();
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
 
-var db = require("./models");
+// Sets up the Express App
+// =============================================================
+var app = express(); 
+var PORT = process.env.PORT || 8080; //used for heroku otherwise will run on 8080
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+// Requiring our models for syncing
+var db = require("./models"); //models folder created by sequelize command line
+//includes index.js and any additional tables
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+// Sets up the Express app to handle data parsing
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true })); //middleware code comes from bodyparser package
+// parse application/json
 app.use(bodyParser.json());
-app.use(express.static("public"));
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
-);
-app.set("view engine", "handlebars");
+// Static directory
+app.use(express.static("public")); //basically assets folder
 
 // Routes
-// ===============================
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// =============================================================
+require("./routes/apiRoutes.js")(app);
+// require("./routes/html-routes.js")(app);
 
-var syncOptions = { force: false };
-
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
-
-// Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+    console.log("App listening on PORT " + PORT);
   });
 });
-
-module.exports = app;
