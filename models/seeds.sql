@@ -1,10 +1,10 @@
 ### Seeds
 
-USE burgers_db;
+USE project_fitness;
 
-INSERT INTO burgers (burger_name) VALUES ('BBQ Bacon Burger');
-INSERT INTO burgers (burger_name) VALUES ('Bacon Deluxe');
-INSERT INTO burgers (burger_name) VALUES ('McDouble');
-INSERT INTO burgers (burger_name) VALUES ('Big Mac');
-INSERT INTO burgers (burger_name) VALUES ('Southern Classic Burger');
-INSERT INTO burgers (burger_name) VALUES ('Turkey Burger');
+INSERT INTO workouts (workoutName) VALUES ('BBQ Bacon Burger');
+INSERT INTO workouts (workoutName) VALUES ('Bacon Deluxe');
+INSERT INTO workouts (workoutName) VALUES ('McDouble');
+INSERT INTO workouts (workoutName) VALUES ('Big Mac');
+INSERT INTO workouts (workoutName) VALUES ('Southern Classic Burger');
+INSERT INTO workouts (workoutName) VALUES ('Turkey Burger');
