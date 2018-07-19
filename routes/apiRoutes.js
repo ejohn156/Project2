@@ -1,9 +1,10 @@
 var db = require("../models");
 var caber = require("caber");
-var workoutsApi = {}
+var workoutsApi = {};
 module.exports = function(app) {
   // Get all examples
   app.get("/api/workouts", function(req, res) {
+<<<<<<< HEAD
     db.Workouts.findAll({}).then(function (workoutData) {
     var workouts = []
         var workout = {
@@ -33,13 +34,16 @@ module.exports = function(app) {
           workouts.push(workout)
         })
         res.json(workouts)
+=======
+    db.Workouts.findAll({}).then(function(data) {
+      res.json(data);
+>>>>>>> 073629cb06d977932361f771b7833fa436eba8a1
     });
   })
   // Create a new example
   app.post("/api/workouts", function(req, res) {
-    
     db.Workouts.create(req.body).then(function(workout) {
-      console.log(workout)
+      console.log(workout);
       res.json(workout);
     });
   });

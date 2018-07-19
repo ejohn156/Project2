@@ -20,14 +20,14 @@
         "eqeqeq": "error",
         "no-empty-function": "error",
         "no-multi-spaces": "error",
-        "no-unused-vars": "error",
+        "no-unused-vars": "warn",
         "camelcase": "error",
         "indent": [
-            "error",
+            "warn",
             2
         ],
         "linebreak-style": [
-            "error",
+            "warn",
             "unix"
         ],
         "quotes": [
@@ -38,6 +38,6 @@
             "error",
             "always"
         ],
-        "prettier/prettier": "error"
+        "prettier/prettier": "warn"
     }
 }
