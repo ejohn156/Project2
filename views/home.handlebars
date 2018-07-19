@@ -98,9 +98,15 @@
                     <button class="btn btn-success startBtn" id="startBtn">Start</button>
                 </div>
                 <div class="card-footer text-muted">
-                    <p id="Quotes">{{quotes}}</p>
+                    <p id="quotes">{{quotes}}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+  $("*").click(function(event){
+      event.preventDefault()
+  })
+
+</script>
