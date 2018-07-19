@@ -91,23 +91,33 @@
         </div>
         {{!-- Bmi end --}} {{!-- Workouts data dump --}}
         <div class="col-md-6">
-            <div class="card text-center">
+            <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Workouts</h4>
+                    <h4 style="text-align: center">Workouts</h4>
                 </div>
-                <div class="card-body">
-                    {{#each workouts}}
-                    <p class="card-text dataDump">
-                        {{this.name}}
-                    </p>{{/each}}
-                    <button class="btn btn-success startBtn" id="startBtn">Start</button>
-                </div>
-                <div class="card-footer text-muted">
-                    <p id="Quotes">{{quotes}}</p>
-                </div>
+
+                <table class="table table-hover table-dark" style="width:90% text-align: center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each workoutData}}
+                        <tr class="workout" data-workoutId={{this.id}}>
+                            <td>{{this.workoutName}}</td>
+                            <td>{{this.workoutType}}</td>
+                            <td>{{this.workoutDes}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
             </div>
         </div>
+        
     </div>
+
 </div>
 <script>
     $(document).ready(function () {

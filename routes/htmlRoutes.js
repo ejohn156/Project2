@@ -3,37 +3,17 @@ var caber = require("caber")
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function (req, res) {
-    db.Workouts.findAll({}).then(function (workoutData) {
-        var workouts = []
-        var workout = {
-          name: "",
-          exercises: []
-        }
-        workoutData.forEach(function (element) {
-          var exerciseArr = []
-          var parsedWorkout = caber.parse(element.workoutString)
-          workout.name = parsedWorkout.name
-          var iterator = 0
-          for (var j = 0; j < parsedWorkout.length; j++) {
-            if (j === 0) {
-              workout.name = parsedWorkout[j].name
-            }
-            else {
-              var exInfo = {
-                exName: parsedWorkout[j].name,
-                sets: parsedWorkout[j].comment
-              }
-              workout.exercises.push(exInfo)
-            }
-          }
-          workouts.push(workout)
-        })
-        res.render("home", {
   
-          workouts: workouts
-        
-        });
+  app.get("/", function (req, res) {
+    
+    db.Workouts.findAll({}).then(function (workoutData) {
+
+      workoutData.forEach(function(element){
+        element.workoutString = caber.parse(element.workoutString)
+      })
+
+      res.render("home", {workoutData : workoutData})
+   
     });
   });
 

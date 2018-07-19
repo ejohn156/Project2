@@ -6,12 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-<<<<<<< HEAD
-var exphbs = require("express-handlebars")
-
-=======
 var exphbs = require("express-handlebars");
->>>>>>> 073629cb06d977932361f771b7833fa436eba8a1
 // Sets up the Express App
 // =============================================================
 var app = express();
