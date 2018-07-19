@@ -6,40 +6,101 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-3">
-            <form class="bmiCalc">
-                <h2>BMI Calculator</h2>
-                <div class="form-group form-row align-items-center">
-                    <label>Height</label>
-                    <input type="number" class="form-control" id="heightft" placeholder="feet">
-                    <input type="number" class="form-control" id="heightIn" placeholder="inches" )>
+
+            {{!-- Login card begins here --}}
+            <form class="loginSignUp">
+                <div class="card ">
+                    <div class="card-header text-center">
+                        <h4>Welcome
+                        </h4>
+                        <br>
+                        <button type="submit" class="btn btn-success btn-sm login" data-toggle="collapse" data-target=".collapseLogin" role="button"
+                            aria-expanded="false" aria-controls="multiCollapseExample1">
+                            <i class="material-icons">person</i>
+                            <br>Login</button>
+
+                        <button class="btn btn-info btn-sm signUp" data-toggle="collapse" data-target=".collapseSignUp" role="button" aria-expanded="false"
+                            aria-controls="multiCollapseExample1">
+                            <i class="material-icons">person_add</i>
+                            <br> Sign up</button>
+                    </div>
+                    <div class="collapseLogin collapse">
+                        <div class="form-group  w-95 px-2">
+                            <label>Email</label>
+                            <input type="email" class="form-control " id="loginEmail" placeholder="Enter email">
+                        </div>
+                        <div class="form-group  w-95 px-2">
+                            <label>Password</label>
+                            <input type="password" class="form-control password" id="loginPassword" placeholder="Password">
+                            <br>
+                            <button type="submit" class="btn btn-success btn-sm loginBtn" id="loginBtn">Login</button>
+                        </div>
+                    </div>
+                    <div class="collapseSignUp collapse">
+                        <div class="signUpForm">
+                            <br>
+                            <div class="form-group  w-95 px-2">
+                                <input type="text" class="form-control firstName" id="firstName" placeholder="First Name">
+                            </div>
+                            <div class="form-group  w-95 px-2">
+                                <input type="text" class="form-control lastName" id="lastName" placeholder="Last Name">
+                            </div>
+                            <div class="form-group  w-95 px-2">
+                                <input type="email" class="form-control email" placeholder="Email">
+                            </div>
+                            <div class="form-group  w-95 px-2">
+                                <input type="password" class="form-control pasword" id="signUpPassword" placeholder="Password">
+                                <br>
+                                <button type="submit" class="btn btn-info btn-sm join">Join</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Weight</label>
-                    <input type="number" class="form-control" id="weight" placeholder="lbs">
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button>
             </form>
         </div>
-        <div class="col-md-3">
+        {{!-- Login end --}} {{!-- Bmi calculator --}}
+        <div class="col-md-3 ">
+            <form class="bmiCalc">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4>BMI Calculator</h4>
+                    </div>
+                    <div class="form-group w-75 px-3">
+                        <label>Height</label>
+                        <input type="number" class="form-control heightft" id="heightft" placeholder="feet" min="1" max="8">
+                        <br>
+                        <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
+                    </div>
+                    <div class="form-group  w-75 px-3">
+                        <label for="exampleInputPassword1">Weight</label>
+                        <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
+                        <br>
+                        <div>
+                            <h6 class="bmiResult"></h6>
+                        </div>
+                        <button type="submit" class="btn btn-success">Calculate</button>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </form>
         </div>
+        {{!-- Bmi end --}} {{!-- Workouts data dump --}}
         <div class="col-md-6">
             <div class="card text-center">
                 <div class="card-header">
-                    <p id="quotes">{{quotes}}</p>
+                    <h4 class="card-title">Workouts</h4>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Workouts</h5>
-                    <p class="card-text dataDump">
-                        {{data}}
-                    </p>
-                    <a href="#" class="btn btn-success">Start</a>
+                    <p class="card-text dataDump">{{data}}</p>
+                    <button class="btn btn-success startBtn" id="startBtn">Start</button>
                 </div>
                 <div class="card-footer text-muted">
-
+                    <p id="Quotes">{{quotes}}</p>
                 </div>
             </div>
-
         </div>
     </div>
-</div>
 </div>
