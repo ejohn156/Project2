@@ -11,6 +11,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-mass-index": "^1.0.0",
     "body-parser": "^1.18.3",
     "caber": "^5.0.1",
