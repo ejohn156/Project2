@@ -43,6 +43,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
+
+  // Associate all users to have many Progress
+  // When a user unregister from the site, delete their log progress
+  User.associate = function(models) {
+    models.User.hasMnay(models.Progress, {
+      onDelete: "cascade"
+    });
+  };
+
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
