@@ -6,10 +6,10 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars")
+var exphbs = require("express-handlebars");
 // Sets up the Express App
 // =============================================================
-var app = express(); 
+var app = express();
 var PORT = process.env.PORT || 8080; //used for heroku otherwise will run on 8080
 
 // Requiring our models for syncing

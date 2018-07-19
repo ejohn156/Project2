@@ -1,20 +1,18 @@
 var db = require("../models");
 var caber = require("caber");
-var workoutsApi = {}
+var workoutsApi = {};
 module.exports = function(app) {
   // Get all examples
   app.get("/api/workouts", function(req, res) {
     db.Workouts.findAll({}).then(function(data) {
-      
       res.json(data);
     });
   });
 
   // Create a new example
   app.post("/api/workouts", function(req, res) {
-    
     db.Workouts.create(req.body).then(function(workout) {
-      console.log(workout)
+      console.log(workout);
       res.json(workout);
     });
   });

@@ -22,26 +22,25 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    // User Password 
+    // User Password
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     // User Height
     height: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-    },  
-    // User Weight  
+      allowNull: false
+    },
+    // User Weight
     weight: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
     // User Body Mass Index
     bmindex: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      
+      allowNull: false
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
