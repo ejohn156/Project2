@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Workouts = sequelize.define("Workouts", {
-        workout: {
+        workoutString: {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
