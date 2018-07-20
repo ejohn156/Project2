@@ -46,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
 
   // Associate all users to have many Progress
   // When a user unregister from the site, delete their log progress
-  
+
   // UserLogin.associate = function(models) {
   //   models.User.hasMany(models.Progress, {
   //     onDelete: "cascade"

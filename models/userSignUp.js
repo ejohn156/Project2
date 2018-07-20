@@ -4,7 +4,7 @@ var bcrypt = require("bcrypt-nodejs");
 
 // Creating the User Model
 module.exports = function(sequelize, DataTypes) {
-  var UserSignUp = sequelize.define("UserSignUp", {
+  var User = sequelize.define("User", {
     // Name, cannot be null
     name: {
       type: DataTypes.STRING,
@@ -26,36 +26,36 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    // User Height
+    height: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    // User Weight
+    weight: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    // User Body Mass Index
+    bmindex: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
-//    // User Height
-//     height: {
-//       type: DataTypes.INTEGER,
-//       allowNull: true
-//     },
-//     // User Weight
-//     weight: {
-//       type: DataTypes.INTEGER,
-//       allowNull: true
-//     },
-//     // User Body Mass Index
-//     bmindex: {
-//       type: DataTypes.INTEGER,
-//       allowNull: true
-//     }
   });
 
   // Associate all users to have many Progress
   // When a user unregister from the site, delete their log progress
 
-  //   UserSignUp.associate = function(models) {
-//     models.UserSignUp.hasMany(models.Progress, {
-//       onDelete: "cascade"
-//     });
-//   };
+  User.associate = function(models) {
+    models.User.hasMany(models.Progress, {
+      onDelete: "cascade"
+    });
+  };
 
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  UserSignUp.prototype.validPassword = function(password) {
+  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  return UserSignUp;
+  return User;
 };

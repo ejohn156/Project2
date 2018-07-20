@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Progress.associate = function(models) {
-    models.Progress.belongsTo(models.UserLogin, {
+    models.Progress.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }

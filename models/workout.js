@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    }, 
+    },
     workoutType: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,16 +20,14 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    }, 
+    },
     workoutString: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
       }
-      
-    },
-    
+    }
   });
   return Workouts;
 };

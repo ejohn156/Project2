@@ -34,7 +34,12 @@
                             <div class="form-group w-95 px-2">
                                 <input type="password" class="form-control password2" id="password2" placeholder="Confirm Password" name="password2">
                                 <br>
-                                <button type="submit" class="btn btn-info btn-sm join">Join</button>
+                                {{!-- Alerts error message  --}}
+                                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                                </div>
+                                <button type="submit" id="joinButton" class="btn btn-info btn-sm join">Join</button>
                             </div>
                         </div>
                     </div>
@@ -97,56 +102,3 @@
         </div>
     </div>
 </div>
-<script>
-    $("*").click(function (event) {
-        event.preventDefault()
-    })
-    $(document).ready(function () {
-        $(".calculate").click(function (event) {
-            $(".bmiResult").empty()
-            console.log("button clicked")
-            event.preventDefault()
-            var heightIn = $(".heightIn").val()
-            var heightFt = $(".heightFt").val()
-            var height = parseInt(heightFt) * 12 + parseInt(heightIn)
-            var weight = $(".weight").val()
-            var bmi = parseInt(weight) / Math.pow(height, 2) * 703
-            console.log(bmi)
-
-            $(".bmiResult").append("Your BMI: " + bmi.toFixed(2))
-        })
-    })
-
-    // show/hide signUp and logIn forms on home
-    $(".login").click(function () {
-        $(".collapseSignUp").toggleClass("show", false)
-    })
-    $(".signUp").click(function () {
-        $(".collapseLogin").toggleClass("show", false)
-    })
-
-    //login signUp info grab
-    var userLogin = {
-        email: $("#loginEmail").val().trim(),
-        password: $("#loginPassword").val().trim()
-    }
-    var userSignUp = {
-        name: $("#name").val().trim(),
-        email: $("#signUpEmail").val().trim(),
-        password: $("#signUpPassword").val().trim(),
-        passwordVerify: $("#password2").val().trim()
-    }
-    $("#loginBtn").click(function () {
-        event.preventDefault()
-
-        $.post("/api/user", userLogin, function (user) {
-            if (user) {
-                console.log("Attempted login: " + userLogin)
-            } else {
-                alert("something went wrong")
-            }
-        });
-
-        
-    })
-</script>
