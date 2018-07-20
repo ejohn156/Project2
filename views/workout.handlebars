@@ -1,0 +1,61 @@
+    
+    
+    
+    
+    <form class = "addExercise">
+        Exercise:<br>
+        <input type="text" class= exercise name="exercise" placeholder="exercise"><br>
+        Weight:<br>
+        <input type="text" class= weight name="weight" placeholder="weight"><br>
+        Sets:<br>
+        <input type="text" class= sets name="sets" placeholder="sets"><br>
+        Reps:<br>
+        <input type="text" class= reps name="reps" placeholder="reps"><br><br>
+        <input class="addExercise" type="submit" value="Add Exercises">
+        <input class="submitExercises" type="submit" value="Create Workout">
+    </form>
+
+    <script>
+        $.post("api/workouts", newWorkout, function() {
+            window.location.href = "/";
+        })
+
+    $(document).ready(function () {
+    console.log("document ready");
+    var caber = require("caber");
+    var workoutString = "";
+
+
+
+    //text box questions for exercise, weight, reps and sets
+    $(".addExercise").submit (function (event) {
+        event.preventDefault();
+        var exercise = $(".exercise").val().trim();
+      //  var weight = $(".weight").val();
+        var sets = $(".sets").val();
+        var reps = $(".reps").val();
+        workoutString += "" + exercise + " (" + reps + "), (" + sets + ")\n";
+        this.form.reset();
+        console.log("printed concatenated string and reset form");
+        
+        //clear variables
+        var exercise = "";
+        var weight = "";
+        var sets = "";
+        var reps = "";
+        console.log("cleared inputs");
+
+        console.log(workoutString);
+    });
+        //caber creates wotkout when done adding exrecises
+    $(".submitExercises").click("submit", function (event) {
+        event.preventDefault();
+        console.log(workoutString);
+        var workout = caber.parse(workoutString);
+        console.log(workout);
+        console.log(JSON.stringify(workout, null, 4));
+    });
+});
+    
+    
+    </script>

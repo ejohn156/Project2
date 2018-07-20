@@ -1,16 +1,16 @@
 var db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Workouts.findAll({}).then(function(workoutData) {
+  app.get("/", function (req, res) {
+    db.Workouts.findAll({}).then(function (workoutData) {
       res.render("home", workoutData);
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
+  app.get("/example/:id", function (req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function (
       dbExample
     ) {
       res.render("example", {
@@ -18,9 +18,14 @@ module.exports = function(app) {
       });
     });
   });
+  app.post("/api/workouts", function (req, res) {
+    db.Workouts.create(req.body).then(function (newWorkout) {
+      res.json(newWorkout);
+    });
+  });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };
