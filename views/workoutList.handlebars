@@ -12,7 +12,7 @@
                     </thead>
                     <tbody>
                         {{#each workoutData}}
-                        <tr class="workout" data-workoutId={{this.id}}>
+                        <tr class="workoutRow" id={{this.id}}>
                             <td>{{this.workoutName}}</td>
                             <td>{{this.workoutType}}</td>
                             <td>{{this.workoutDes}}</td>
@@ -21,3 +21,11 @@
                     </tbody>
     </div>
 </div>
+<script>
+    $(".workoutRow").click(function(event){
+        event.preventDefault()
+    var workoutId = $(".workoutRow").attr("id")
+    console.log(workoutId)
+    location.replace("/workouts/ind/" + workoutId)
+})
+</script>

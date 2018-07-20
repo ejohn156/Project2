@@ -30,10 +30,10 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/workouts/type/:category", function (req, res) {
+  app.get("/workouts/type/:type", function (req, res) {
 
     db.Workouts.findAll({where: {
-      workoutType : req.params.category
+      workoutType : req.params.type
     }}).then(function (workoutData) {
 
       workoutData.forEach(function (element) {
@@ -45,27 +45,42 @@ module.exports = function (app) {
     });
   });
 
-  // app.get("/workouts/:id", function (req, res) {
+  app.get("/workouts/name/:name", function (req, res) {
 
-  //   db.Workouts.findAll({where: {
-  //     id : parseInt(req.params.id)
-  //   }}).then(function (workoutData) {
+    db.Workouts.findAll({where: {
+      workoutName : req.params.name
+    }}).then(function (workoutData) {
 
-  //     workoutData.forEach(function (element) {
-  //       element.workoutString = caber.parse(element.workoutString)
-  //     })
-  //     console.log(workoutData[0])
-  //     res.render("workoutList", { workoutData: workoutData })
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData[0])
+      res.render("workoutList", { workoutData: workoutData })
 
-  //   });
-  // });
+    });
+  });
+
+  app.get("/workouts/ind/:id", function (req, res) {
+    console.log(req.params.id)
+    db.Workouts.findAll({where: {
+      id : req.params.id
+    }}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData.workoutName)
+      res.render("indWorkout", { workoutData: workoutData })
+
+    });
+  });
 
   app.get("/profile", function (req, res) {
     res.render("profile");
   })
 
-    app.get("/workout", function (req, res) {
-    res.render("workout");
+    app.get("/workouts/create", function (req, res) {
+    res.render("createWorkout");
   })
 
     // Load example page and pass in an example by id
