@@ -1,73 +1,57 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <img src="/images/gym-banner-placehoder.jpg" class="img-fluid" alt="Responsive image">
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col-md-3">
-
-            {{!-- Login card begins here --}}
+<div class="container-fluid mt-2">
+    <div class="row ">
+        {{!-- Login card begins here --}}
+        <div class="col-md-2">
             <form class="loginSignUp">
-                <div class="card ">
-                    <div class="card-header text-center">
-                        <h4>Welcome
-                        </h4>
+                <br>
+                <div class="collapseLogin collapse">
+                    <div class="card">
                         <br>
-                        <button type="submit" class="btn btn-success btn-sm login" data-toggle="collapse" data-target=".collapseLogin" role="button"
-                            aria-expanded="false" aria-controls="multiCollapseExample1">
-                            <i class="material-icons">person</i>
-                            <br>Login</button>
-
-                        <button class="btn btn-info btn-sm signUp" data-toggle="collapse" data-target=".collapseSignUp" role="button" aria-expanded="false"
-                            aria-controls="multiCollapseExample1">
-                            <i class="material-icons">person_add</i>
-                            <br> Sign up</button>
-                    </div>
-                    <div class="collapseLogin collapse">
-                        <div class="form-group  w-95 px-2">
-                            <label>Email</label>
-                            <input type="email" class="form-control " id="loginEmail" placeholder="Enter email">
+                        <div class="form-group w-95 px-2">
+                            <input type="email" class="form-control " id="loginEmail" placeholder="Enter email" name="email">
                         </div>
-                        <div class="form-group  w-95 px-2">
-                            <label>Password</label>
-                            <input type="password" class="form-control password" id="loginPassword" placeholder="Password">
+                        <div class="form-group w-95 px-2">
+                            <input type="password" class="form-control password" id="loginPassword" placeholder="Password" name="password">
                             <br>
                             <button type="submit" class="btn btn-success btn-sm loginBtn" id="loginBtn">Login</button>
                         </div>
                     </div>
-                    <div class="collapseSignUp collapse">
+                </div>
+                <div class="collapseSignUp collapse">
+                    <div class="card">
+                        <br>
                         <div class="signUpForm">
-                            <br>
                             <div class="form-group  w-95 px-2">
-                                <input type="text" class="form-control firstName" id="firstName" placeholder="First Name">
+                                <input type="text" class="form-control name" id="name" placeholder="Name">
                             </div>
                             <div class="form-group  w-95 px-2">
-                                <input type="text" class="form-control lastName" id="lastName" placeholder="Last Name">
+                                <input type="text" class="form-control lastName" id="username" placeholder="Username">
                             </div>
                             <div class="form-group  w-95 px-2">
-                                <input type="email" class="form-control email" placeholder="Email">
+                                <input type="email" class="form-control email" id="signUpEmail" placeholder="Email" name="signUpEmail">
                             </div>
                             <div class="form-group  w-95 px-2">
-                                <input type="password" class="form-control pasword" id="signUpPassword" placeholder="Password">
+                                <input type="password" class="form-control signUpPassword" id="signUpPassword" placeholder="Password" name="signUpPassword">
+                            </div>
+                            <div class="form-group w-95 px-2">
+                                <input type="password" class="form-control password2" id="password2" placeholder="Confirm Password" name="password2">
                                 <br>
                                 <button type="submit" class="btn btn-info btn-sm join">Join</button>
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                    </div>
                 </div>
             </form>
         </div>
         {{!-- Login end --}} {{!-- Bmi calculator --}}
-        <div class="col-md-3 ">
+        <div class="col-md-2 offset-md-1 mt-5">
             <form class="bmiCalc">
                 <div class="card ">
                     <div class="card-header">
                         <h4>BMI Calculator</h4>
                     </div>
                     <div class="form-group w-75 px-3">
+                        <br>
                         <label>Height</label>
                         <input type="number" class="form-control heightft" id="heightft" placeholder="feet" min="1" max="8">
                         <br>
@@ -78,7 +62,8 @@
                         <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
                         <br>
                         <div>
-                            <h6 class="bmiResult"></h6>
+                            <p class="bmiResult h6"></p>
+
                         </div>
                         <button type="submit" class="btn btn-success">Calculate</button>
                     </div>
@@ -88,19 +73,50 @@
             </form>
         </div>
         {{!-- Bmi end --}} {{!-- Workouts data dump --}}
-        <div class="col-md-6">
+        <div class="col-md-4 mt-5">
             <div class="card text-center">
                 <div class="card-header">
                     <h4 class="card-title">Workouts</h4>
                 </div>
-                <div class="card-body">
-                    <p class="card-text dataDump">{{data}}</p>
-                    <button class="btn btn-success startBtn" id="startBtn">Start</button>
-                </div>
-                <div class="card-footer text-muted">
-                    <p id="Quotes">{{quotes}}</p>
-                </div>
+                <table class="table table-hover table-dark" style="width:90% text-align: center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each workoutData}}
+                        <tr class="workout" data-workoutId={{this.id}}>
+                            <td>{{this.workoutName}}</td>
+                            <td>{{this.workoutType}}</td>
+                            <td>{{this.workoutDes}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
             </div>
         </div>
+
     </div>
+
 </div>
+<script>
+    $("*").click(function (event) {
+        event.preventDefault()
+    })
+    $(document).ready(function () {
+        $(".bmiCalc").on("submit", function (event) {
+            $(".bmiResult").empty()
+            console.log("button clicked")
+            event.preventDefault()
+            var heightIn = $(".heightIn").val().trim() + "in"
+            var heightFt = $(".heightFt").val().trim() + "ft"
+            var height = parseInt(heightFt) * 12 + parseInt(heightIn)
+            var weight = $(".weight").val().trim() + "lb"
+            var bmi = parseInt(weight) / Math.pow(height, 2) * 703
+            console.log(bmi)
+            $(".bmiResult").append(bmi.toFixed(2))
+        })
+    })
+</script>

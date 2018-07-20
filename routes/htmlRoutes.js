@@ -1,31 +1,43 @@
 var db = require("../models");
+var caber = require("caber")
 
 module.exports = function (app) {
   // Load index page
+
   app.get("/", function (req, res) {
+
     db.Workouts.findAll({}).then(function (workoutData) {
-      res.render("home", workoutData);
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+
+      res.render("home", { workoutData: workoutData })
+
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
+  app.get("/profile", function (req, res) {
+    res.render("profile");
+  })
+
+    app.get("/workout", function (req, res) {
+    res.render("workout");
+  })
+
+    // Load example page and pass in an example by id
+    app.get("/example/:id", function (req, res) {
+      db.Example.findOne({ where: { id: req.params.id } }).then(function (
+        dbExample
+      ) {
+        res.render("example", {
+          example: dbExample
+        });
       });
     });
-  });
-  app.post("/api/workouts", function (req, res) {
-    db.Workouts.create(req.body).then(function (newWorkout) {
-      res.json(newWorkout);
-    });
-  });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function (req, res) {
-    res.render("404");
-  });
-};
+    // Render 404 page for any unmatched routes
+    app.get("*", function (req, res) {
+      res.render("404");
+    });
+  };
