@@ -64,6 +64,9 @@ module.exports = function (app) {
     res.render("profile");
   })
 
+    app.get("/workout", function (req, res) {
+    res.render("workout");
+  })
 
     // Load example page and pass in an example by id
     app.get("/example/:id", function (req, res) {
