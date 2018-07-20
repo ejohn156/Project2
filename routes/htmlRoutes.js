@@ -11,8 +11,21 @@ module.exports = function (app) {
       workoutData.forEach(function (element) {
         element.workoutString = caber.parse(element.workoutString)
       })
-
+      
       res.render("home", { workoutData: workoutData })
+
+    });
+  });
+
+  app.get("/workouts/all", function (req, res) {
+
+    db.Workouts.findAll({}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData[0])
+      res.render("workoutList", { workoutData: workoutData })
 
     });
   });
