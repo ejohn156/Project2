@@ -30,17 +30,17 @@ module.exports = function(sequelize, DataTypes) {
     // User Height
     height: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     // User Weight
     weight: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     // User Body Mass Index
     bmindex: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     }
   });
 

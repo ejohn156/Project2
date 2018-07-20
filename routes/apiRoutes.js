@@ -4,11 +4,11 @@ var workoutsApi = {};
 module.exports = function(app) {
   // Get all examples
   app.get("/api/workouts", function(req, res) {
-    db.Workouts.findAll(req.body).then(function(data){
-    res.json(data)
-    
-  })
-})
+    db.Workouts.findAll(req.body).then(function(data) {
+      res.json(data);
+    });
+    });
+  // });
   // Create a new example
   app.post("/api/workouts", function(req, res) {
     db.Workouts.create(req.body).then(function(workout) {
