@@ -11,8 +11,66 @@ module.exports = function (app) {
       workoutData.forEach(function (element) {
         element.workoutString = caber.parse(element.workoutString)
       })
-
+      
       res.render("home", { workoutData: workoutData })
+
+    });
+  });
+
+  app.get("/workouts/all", function (req, res) {
+
+    db.Workouts.findAll({}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData[0])
+      res.render("workoutList", { workoutData: workoutData })
+
+    });
+  });
+
+  app.get("/workouts/type/:type", function (req, res) {
+
+    db.Workouts.findAll({where: {
+      workoutType : req.params.type
+    }}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData[0])
+      res.render("workoutList", { workoutData: workoutData })
+
+    });
+  });
+
+  app.get("/workouts/name/:name", function (req, res) {
+
+    db.Workouts.findAll({where: {
+      workoutName : req.params.name
+    }}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData[0])
+      res.render("workoutList", { workoutData: workoutData })
+
+    });
+  });
+
+  app.get("/workouts/ind/:id", function (req, res) {
+    console.log(req.params.id)
+    db.Workouts.findAll({where: {
+      id : req.params.id
+    }}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData.workoutName)
+      res.render("indWorkout", { workoutData: workoutData })
 
     });
   });
@@ -21,8 +79,8 @@ module.exports = function (app) {
     res.render("profile");
   })
 
-    app.get("/workout", function (req, res) {
-    res.render("workout");
+    app.get("/workouts/create", function (req, res) {
+    res.render("createWorkout");
   })
 
     // Load example page and pass in an example by id

@@ -11,3 +11,13 @@ body {
 nav{
   box-shadow: 0px 1px 5px grey;
 }
+
+#addExercise{
+  background-color: lightgray;
+  width: 20em;
+  padding-bottom: 1%;
+}
+
+#addExercise .form-control{
+  width: 60%
+}
