@@ -1,38 +1,38 @@
-    $(document).ready(function () {
-    console.log("document ready");
-    var caber = require("caber");
-    var workoutDetails = "";
+//     $(document).ready(function () {
+//     console.log("document ready");
+//     var caber = require("caber");
+//     var workoutDetails = "";
 
 
 
-    //text box questions for exercise, weight, reps and sets
-    $(".addExercise").click("submit", function (event) {
-        event.preventDefault();
-        var exercise = $(".exercise").val().trim();
-        var weight = $(".weight").val();
-        var sets = $(".sets").val();
-        var reps = $(".reps").val();
-        workoutDetails += " " + exercise + " " + weight + "x" + reps + "x" + sets + "\n ";
-        this.form.reset();
-        console.log("printed concatenated string and reset form");
+//     //text box questions for exercise, weight, reps and sets
+//     $(".addExercise").click("submit", function (event) {
+//         event.preventDefault();
+//         var exercise = $(".exercise").val().trim();
+//         var weight = $(".weight").val();
+//         var sets = $(".sets").val();
+//         var reps = $(".reps").val();
+//         workoutDetails += " " + exercise + " " + weight + "x" + reps + "x" + sets + "\n ";
+//         this.form.reset();
+//         console.log("printed concatenated string and reset form");
         
-        //clear variables
-        var exercise = "";
-        var weight = "";
-        var sets = "";
-        var reps = "";
-        console.log("cleared inputs");
+//         //clear variables
+//         var exercise = "";
+//         var weight = "";
+//         var sets = "";
+//         var reps = "";
+//         console.log("cleared inputs");
 
-        console.log(workoutDetails);
-    });
-        //caber creates wotkout when done adding exrecises
-    $(".submitExercises").click("submit", function (event) {
-        event.preventDefault();
-        console.log(workoutDetails);
-        var workout = caber.parse(workoutDetails);
-        console.log(workout);
-        console.log(JSON.stringify(workout, null, 4));
-    });
-});
+//         console.log(workoutDetails);
+//     });
+//         //caber creates wotkout when done adding exrecises
+//     $(".submitExercises").click("submit", function (event) {
+//         event.preventDefault();
+//         console.log(workoutDetails);
+//         var workout = caber.parse(workoutDetails);
+//         console.log(workout);
+//         console.log(JSON.stringify(workout, null, 4));
+//     });
+// });
     
     
