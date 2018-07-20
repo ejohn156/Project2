@@ -30,6 +30,36 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/workouts/type/:category", function (req, res) {
+
+    db.Workouts.findAll({where: {
+      workoutType : req.params.category
+    }}).then(function (workoutData) {
+
+      workoutData.forEach(function (element) {
+        element.workoutString = caber.parse(element.workoutString)
+      })
+      console.log(workoutData[0])
+      res.render("workoutList", { workoutData: workoutData })
+
+    });
+  });
+
+  // app.get("/workouts/:id", function (req, res) {
+
+  //   db.Workouts.findAll({where: {
+  //     id : parseInt(req.params.id)
+  //   }}).then(function (workoutData) {
+
+  //     workoutData.forEach(function (element) {
+  //       element.workoutString = caber.parse(element.workoutString)
+  //     })
+  //     console.log(workoutData[0])
+  //     res.render("workoutList", { workoutData: workoutData })
+
+  //   });
+  // });
+
   app.get("/profile", function (req, res) {
     res.render("profile");
   })
