@@ -8,4 +8,11 @@ Our idea for this project will be to create a fitness app. As of now the app wil
 
 * **Caber npm** This npm will allow users to create custom workouts
 * **Body-mass-index npm** This npm will take in a user’s height and weight and will calculate their bmi from it
-
+* connect-flash 
+* cookie-parser 
+* express-messages 
+* express-session 
+* express-validator 
+* passport 
+* passport-http 
+* passport-local

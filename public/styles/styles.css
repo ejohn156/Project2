@@ -1,3 +1,13 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+body {
+  /* background-color: #f3f3f3; */
+  /* background-image: url("/images/gym-banner-placehoder.jpg"); */
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+nav{
+  box-shadow: 0px 1px 5px grey;
+}
