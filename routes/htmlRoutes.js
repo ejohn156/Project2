@@ -1,10 +1,19 @@
 var db = require("../models");
+var caber = require("caber")
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Workouts.findAll({}).then(function(workoutData) {
-      res.render("home", workoutData);
+  
+  app.get("/", function (req, res) {
+    
+    db.Workouts.findAll({}).then(function (workoutData) {
+
+      workoutData.forEach(function(element){
+        element.workoutString = caber.parse(element.workoutString)
+      })
+
+      res.render("home", {workoutData : workoutData})
+   
     });
   });
 

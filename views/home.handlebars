@@ -59,6 +59,7 @@
                     </div>
                 </div>
             </form>
+
         </div>
         {{!-- Login end --}} {{!-- Bmi calculator --}}
         <div class="col-md-3 ">
@@ -69,7 +70,7 @@
                     </div>
                     <div class="form-group w-75 px-3">
                         <label>Height</label>
-                        <input type="number" class="form-control heightft" id="heightft" placeholder="feet" min="1" max="8">
+                        <input type="number" class="form-control heightFt" id="heightft" placeholder="feet" min="1" max="8">
                         <br>
                         <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
                     </div>
@@ -78,35 +79,61 @@
                         <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
                         <br>
                         <div>
-                            <h6 class="bmiResult"></h6>
+                            <h6 class="bmiResult">placeholder</h6>
                         </div>
                         <button type="submit" class="btn btn-success">Calculate</button>
                     </div>
                     <div class="card-footer">
                     </div>
                 </div>
+
             </form>
         </div>
         {{!-- Bmi end --}} {{!-- Workouts data dump --}}
         <div class="col-md-6">
-            <div class="card text-center">
+            <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Workouts</h4>
+                    <h4 style="text-align: center">Workouts</h4>
                 </div>
-                <div class="card-body">
-                    <p class="card-text dataDump">{{data}}</p>
-                    <button class="btn btn-success startBtn" id="startBtn">Start</button>
-                </div>
-                <div class="card-footer text-muted">
-                    <p id="quotes">{{quotes}}</p>
-                </div>
+
+                <table class="table table-hover table-dark" style="width:90% text-align: center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each workoutData}}
+                        <tr class="workout" data-workoutId={{this.id}}>
+                            <td>{{this.workoutName}}</td>
+                            <td>{{this.workoutType}}</td>
+                            <td>{{this.workoutDes}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
             </div>
         </div>
+        
     </div>
+
 </div>
 <script>
-  $("*").click(function(event){
+    $("*").click(function(event){
       event.preventDefault()
   })
-
-</script>
+    $(document).ready(function () {
+        $(".bmiCalc").on("submit", function (event) {
+            $(".bmiResult").empty()
+            console.log("button clicked")
+            event.preventDefault()
+            var heightIn = $(".heightIn").val().trim() + "in"
+            var heightFt = $(".heightFt").val().trim() + "ft"
+            var height = parseInt(heightFt) * 12 + parseInt(heightIn)
+            var weight = $(".weight").val().trim() + "lb"
+            var bmi = parseInt(weight) / Math.pow(height, 2) * 703
+            console.log(bmi)
+            $(".bmiResult").append(bmi.toFixed(2))
+        })
+    })
