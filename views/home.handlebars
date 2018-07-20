@@ -1,9 +1,9 @@
 <div class="container-fluid mt-2">
     <div class="row ">
-        {{!-- Login card begins here --}}
+        {{!-- Login/sign up card begins here --}}
         <div class="col-md-2">
-            <form class="loginSignUp">
-                <br>
+            <form class="loginSignUp" action="/" method="GET">
+                <br> {{!-- login --}}
                 <div class="collapseLogin collapse">
                     <div class="card">
                         <br>
@@ -17,15 +17,13 @@
                         </div>
                     </div>
                 </div>
+                {{!-- sign up --}}
                 <div class="collapseSignUp collapse">
                     <div class="card">
                         <br>
                         <div class="signUpForm">
                             <div class="form-group  w-95 px-2">
                                 <input type="text" class="form-control name" id="name" placeholder="Name">
-                            </div>
-                            <div class="form-group  w-95 px-2">
-                                <input type="text" class="form-control lastName" id="username" placeholder="Username">
                             </div>
                             <div class="form-group  w-95 px-2">
                                 <input type="email" class="form-control email" id="signUpEmail" placeholder="Email" name="signUpEmail">
@@ -36,7 +34,12 @@
                             <div class="form-group w-95 px-2">
                                 <input type="password" class="form-control password2" id="password2" placeholder="Confirm Password" name="password2">
                                 <br>
-                                <button type="submit" class="btn btn-info btn-sm join">Join</button>
+                                {{!-- Alerts error message  --}}
+                                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                                </div>
+                                <button type="submit" id="joinButton" class="btn btn-info btn-sm join">Join</button>
                             </div>
                         </div>
                     </div>
@@ -94,27 +97,8 @@
                         </tr>
                         {{/each}}
                     </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
-<script>
-    $("*").click(function (event) {
-        event.preventDefault()
-    })
-    $(document).ready(function () {
-        $(".calculate").click(function (event) {
-            $(".bmiResult").empty()
-            console.log("button clicked")
-            event.preventDefault()
-            var heightIn = $(".heightIn").val()
-            var heightFt = $(".heightFt").val()
-            var height = parseInt(heightFt) * 12 + parseInt(heightIn)
-            var weight = $(".weight").val()
-            var bmi = parseInt(weight) / Math.pow(height, 2) * 703
-            console.log(bmi)
-
-            $(".bmiResult").append("Your BMI: " + bmi.toFixed(2))
-        })
-    })
-</script>
