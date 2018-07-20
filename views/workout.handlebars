@@ -18,6 +18,9 @@
 </form>
 
 <script>
+    $(".login").hide()
+    $(".signUp").hide()
+
     $.post("api/workouts", newWorkout, function () {
         window.location.href = "/";
     })
@@ -59,7 +62,6 @@
         });
     });
 
-    $(".login").hide()
-    $(".signUp").hide()
+
 
 </script>
