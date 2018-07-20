@@ -53,7 +53,7 @@
                     <div class="form-group w-75 px-3">
                         <br>
                         <label>Height</label>
-                        <input type="number" class="form-control heightft" id="heightft" placeholder="feet" min="1" max="8">
+                        <input type="number" class="form-control heightFt" id="heightFt" placeholder="feet" min="1" max="8">
                         <br>
                         <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
                     </div>
@@ -63,9 +63,8 @@
                         <br>
                         <div>
                             <p class="bmiResult h6"></p>
-
                         </div>
-                        <button type="submit" class="btn btn-success">Calculate</button>
+                        <button type="submit" class="btn btn-success calculate">Calculate</button>
                     </div>
                     <div class="card-footer">
                     </div>
@@ -97,26 +96,25 @@
                     </tbody>
             </div>
         </div>
-
     </div>
-
 </div>
 <script>
     $("*").click(function (event) {
         event.preventDefault()
     })
     $(document).ready(function () {
-        $(".bmiCalc").on("submit", function (event) {
+        $(".calculate").click(function (event) {
             $(".bmiResult").empty()
             console.log("button clicked")
             event.preventDefault()
-            var heightIn = $(".heightIn").val().trim() + "in"
-            var heightFt = $(".heightFt").val().trim() + "ft"
+            var heightIn = $(".heightIn").val()
+            var heightFt = $(".heightFt").val()
             var height = parseInt(heightFt) * 12 + parseInt(heightIn)
-            var weight = $(".weight").val().trim() + "lb"
+            var weight = $(".weight").val()
             var bmi = parseInt(weight) / Math.pow(height, 2) * 703
             console.log(bmi)
-            $(".bmiResult").append(bmi.toFixed(2))
+
+            $(".bmiResult").append("Your BMI: " + bmi.toFixed(2))
         })
     })
 </script>
