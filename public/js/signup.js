@@ -43,7 +43,7 @@ $(document).ready(function() {
     }
   });
 
-  // Does a post to the signup route. If successful, we are redirected to the Profile page
+  // Does a post to the signup route. 
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
     console.log(name + " " + email + " " + password);
@@ -53,7 +53,7 @@ $(document).ready(function() {
       password: password
     })
       .then(function(data) {
-        window.location.replace(data);
+       // window.location.replace(data);
       })
       // If there's an error, handle it by throwing up a boostrap alert
       .catch(handleLoginErr);
