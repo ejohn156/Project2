@@ -1,12 +1,12 @@
 // show/hide signUp and logIn forms on home
-$(".login").click(function () {
+$(".login").click(function() {
   $(".collapseSignUp").toggleClass("show", false);
 });
-$(".signUp").click(function () {
+$(".signUp").click(function() {
   $(".collapseLogin").toggleClass("show", false);
 });
 
-$(document).ready(function () {
+$(document).ready(function() {
   // Getting references to our form and input
   var nameInput = $("input#name");
   var emailInput = $("input#signUpEmail");
@@ -14,7 +14,7 @@ $(document).ready(function () {
   var passwordConfirm = $("input#password2");
 
   // When the signup button is clicked, we validate the email and password are not blank
-  $("#joinButton").on("click", function (event) {
+  $("#joinButton").on("click", function(event) {
     event.preventDefault();
 
     // If the first password equals the confirmed password
@@ -37,10 +37,13 @@ $(document).ready(function () {
       emailInput.val("");
       passwordInput.val("");
       passwordConfirm.val("");
+      // Collapse the sign up form and show Login form
+      $(".collapseSignUp").toggleClass("show", false);
+      $(".collapseLogin").toggleClass("show", true);
     }
   });
 
-  // Does a post to the signup route. If successful, we are redirected to the Profile page
+  // Does a post to the signup route. 
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
     console.log(name + " " + email + " " + password);
@@ -49,10 +52,10 @@ $(document).ready(function () {
       email: email,
       password: password
     })
-      .then(function (data) {
-        window.location.replace(data);
-        // If there's an error, handle it by throwing up a boostrap alert
+      .then(function(data) {
+       // window.location.replace(data);
       })
+      // If there's an error, handle it by throwing up a boostrap alert
       .catch(handleLoginErr);
   }
 
