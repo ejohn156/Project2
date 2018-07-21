@@ -3,6 +3,11 @@ $(document).ready(function() {
   var emailInput = $("input#loginEmail");
   var passwordInput = $("input#loginPassword");
 
+  $("#loginPassword").on("click", function(event) {
+    event.preventDefault();
+    $("#alert").css("display", "none");
+  });
+
   // When the form is submitted, we validate there's an email and password entered
   $("#loginBtn").on("click", function(event) {
     event.preventDefault();
@@ -17,10 +22,9 @@ $(document).ready(function() {
       return;
     }
 
-    // If we have an email and password we run the loginUser function and clear the form
+    // If we have an email and password we run the loginUser function and close the form
     loginUser(userData.email, userData.password);
-    emailInput.val("");
-    passwordInput.val("");
+
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects them to their profile page
@@ -36,6 +40,8 @@ $(document).ready(function() {
       .catch(function(err) {
         // If there's an error, log the error
         console.log(err);
+        $("#alert").css("display", "inherit");
+        passwordInput.val("");
       });
   }
 });
