@@ -23,8 +23,15 @@ module.exports = function(app) {
       email: req.body.email,
       password: req.body.password
     })
-      .then(function() {
-        res.redirect(307, "/api/login");
+      .then(function(userData) {
+
+        app.get("/profile", function(req, res) {
+          res.render("profile", {
+            userName: userData.name
+          });
+        });
+        
+        
       })
       .catch(function(err) {
         console.log(err);

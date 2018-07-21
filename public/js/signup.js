@@ -28,6 +28,7 @@ $(document).ready(function() {
 
       // Return if there's not an email or password entered
       if (!userData.email || !userData.password) {
+        alert("Please fill out all the fields");
         return;
       }
 
@@ -40,10 +41,14 @@ $(document).ready(function() {
       // Collapse the sign up form and show Login form
       $(".collapseSignUp").toggleClass("show", false);
       $(".collapseLogin").toggleClass("show", true);
+    } else {
+      alert("Passwords have to match");
+      passwordInput.val("");
+      passwordConfirm.val("");
     }
   });
 
-  // Does a post to the signup route. 
+  // Does a post to the signup route.
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
     console.log(name + " " + email + " " + password);
