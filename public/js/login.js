@@ -3,9 +3,16 @@ $(document).ready(function() {
   var emailInput = $("input#loginEmail");
   var passwordInput = $("input#loginPassword");
 
+  // Clears the "incorrect password" msg when clicked
   $("#loginPassword").on("click", function(event) {
     event.preventDefault();
     $("#alert").css("display", "none");
+  });
+
+  // If user clicks on "Project Fitness" title they'll go back to home page
+  $(".navbar-text").on("click", function(event) {
+    event.preventDefault();
+    window.location.replace("/");
   });
 
   // When the form is submitted, we validate there's an email and password entered
@@ -24,7 +31,6 @@ $(document).ready(function() {
 
     // If we have an email and password we run the loginUser function and close the form
     loginUser(userData.email, userData.password);
-
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects them to their profile page

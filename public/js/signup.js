@@ -51,7 +51,7 @@ $(document).ready(function() {
   // Does a post to the signup route.
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
-    console.log(name + " " + email + " " + password);
+    //console.log(name + " " + email + " " + password);
     $.post("/api/signup", {
       name: name,
       email: email,
