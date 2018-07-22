@@ -82,13 +82,13 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/workouts/create", function (req, res) {
+    res.render("createWorkout");
+  })
+
 
   app.get("/profile", function (req, res) {
     res.render("profile");
-  });
-
-  app.get("/workout", function (req, res) {
-    res.render("workout");
   });
 
   // Load example page and pass in an example by id
