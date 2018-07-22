@@ -25,6 +25,13 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/workouts", function(req, res) {
+    db.UserLogin.findAll(req.body).then(function(data) {
+      res.json(data);
+    });
+  });
+  
+
   // app.post('/',
   //   passport.authenticate('home', {
   //     successRedirect: '/profile',
