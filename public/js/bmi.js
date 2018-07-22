@@ -1,5 +1,5 @@
 var BMI = require("body-mass-index");
-$(".bmiCalc").on("submit", function() {
+$(".bmi-form").on("submit", function() {
   var heightIn =
     $(".heightIn")
       .val()
@@ -15,4 +15,11 @@ $(".bmiCalc").on("submit", function() {
       .trim() + "lb";
   var bmi = BMI(height, weight);
   $(".bmiResult").text(bmi);
+});
+
+$(".routes").on("click", function(event) {
+  event.preventDefault();
+  var route = $(this).attr("href");
+  console.log(route);
+  location.replace(route);
 });

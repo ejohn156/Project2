@@ -18,6 +18,18 @@ module.exports = function (app) {
     });
   });
 
+
+  app.get("/profile", function(req, res) {
+    console.log(req.user.name);
+    var firstName = req.user.name.split(" ", 1);
+    var user = {
+      userName: firstName,
+      email: req.user.email
+      //bmi: req.user.bmindex,
+      //workout: req.user.workout
+    };
+    res.render("profile", user);
+    
   app.get("/workouts/all", function (req, res) {
 
     db.Workouts.findAll({}).then(function (workoutData) {
@@ -28,6 +40,7 @@ module.exports = function (app) {
       res.render("workoutList", { workoutData: workoutData })
 
     });
+
   });
 
   app.get("/workouts/type/:type", function (req, res) {
@@ -88,6 +101,10 @@ module.exports = function (app) {
 
   app.get("/profile", function (req, res) {
     res.render("profile");
+  });
+
+  app.get("/bmi", function(req, res) {
+    res.render("bmi");
   });
 
   // Load example page and pass in an example by id

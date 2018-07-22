@@ -1,10 +1,23 @@
+    
+<div class="dropdown">
+  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{userName}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button">Signed in as {{email}}</button>
+    <a class="dropdown-item routes" href="/profile">Your account</a>
+    <a class="dropdown-item routes" href="/bmi">Your body mass index</a>
+    <a class="dropdown-item routes" href="/workout">Your workouts</a>
+    <a class="dropdown-item routes" href="/">Log out</a>
+  </div>
+</div>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h4>
-                        <p>Welcome {{userName}}
+                        <p>
                             <button type="button" class="btn btn-sm btn-info editProfile" id="editProfile" data-toggle="modal" data-target="#myModal">Edit</button>
                         </p>
                     </h4>
@@ -16,6 +29,7 @@
             </div>
         </div>
         <div class="col-md-6">
+            
         </div>
     </div>
 </div>
@@ -43,10 +57,17 @@
         </div>
     </div>
 </div>
+
+
 <script>
     $("*").click(function (event) {
         event.preventDefault()
-    })
-    $(".login").hide()
-    $(".signUp").hide()
+    });
+    $(".login").hide();
+    $(".signUp").hide();
+    $(".profile").click(function() {
+  $(".collapseLogin").toggleClass("show", false);
+});
+
+$("")
 </script>

@@ -24,3 +24,8 @@ nav{
 #loginBtn {
   margin-top: 13px;
 }
+
+#profileTab {
+  font-size: 25px;
+  float: left;
+}

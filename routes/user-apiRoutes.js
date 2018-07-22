@@ -10,7 +10,9 @@ module.exports = function(app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the profile page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
+    console.log(req.body);
     res.json("/profile");
+    
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -24,14 +26,7 @@ module.exports = function(app) {
       password: req.body.password
     })
       .then(function(userData) {
-
-        app.get("/profile", function(req, res) {
-          res.render("profile", {
-            userName: userData.name
-          });
-        });
-        
-        
+        console.log(userData);
       })
       .catch(function(err) {
         console.log(err);
@@ -55,8 +50,12 @@ module.exports = function(app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        email: req.user.email,
-        id: req.user.id
+        name: req.body.name,
+        email: req.body.email,
+        id: req.body.id,
+        bmi: req.body.bmindex,
+        height: req.body.height,
+        weight: req.body.weight
       });
     }
   });
