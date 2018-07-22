@@ -19,11 +19,23 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    res.render("profile");
+    console.log(req.user.name);
+    var firstName = req.user.name.split(" ", 1);
+    var user = {
+      userName: firstName,
+      email: req.user.email
+      //bmi: req.user.bmindex,
+      //workout: req.user.workout
+    };
+    res.render("profile", user);
   });
 
   app.get("/workout", function(req, res) {
     res.render("workout");
+  });
+
+  app.get("/bmi", function(req, res) {
+    res.render("bmi");
   });
 
   // Load example page and pass in an example by id
