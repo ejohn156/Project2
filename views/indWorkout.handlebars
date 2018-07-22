@@ -1,0 +1,13 @@
+
+
+<h3>Name:{{workoutName}}</h3>
+<h6>Type: {{workoutType}}</h6>
+<h6>Description:{{workoutDes}}</h6>
+<h6>
+    Exercises:
+</h6>
+<ul>
+    {{#each workoutString}}
+    <li>{{this.name}} + " | " + {{this.comment}}</li>
+    {{/each}}
+</ul>
