@@ -50,4 +50,13 @@ $(document).ready(function() {
         passwordInput.val("");
       });
   }
+
+  // Click functions for profile dropdown
+  $(".routes").on("click", function(event) {
+    event.preventDefault();
+    var route = $(this).attr("href");
+    console.log(route);
+    location.replace(route);
+    
+  });
 });
