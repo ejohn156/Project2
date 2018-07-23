@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/styles.css">
-  
+
 
   <title>Project Fitness</title>
 </head>
@@ -33,17 +33,9 @@
         aria-controls="multiCollapseExample1">
         <i class="material-icons">person_add</i>
         Sign up</button>
-      <a href="#">
-        <span class="h3 navbar-text ml-3"> Project Fitness</span>
-      </a>
-    </span>
-
-      <button type="button" class="btn btn-secondary" class="workoutNav" onclick="location.href = '/workouts/all';">Workouts</button>
-
-
-        <!-- Default dropleft button -->
+      <!-- Default dropleft button -->
       <div class="btn-group dropleft" id="userDropdown">
-        <button type="button" class="btn btn-alert dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{userName}}
         </button>
         <div class="dropdown-menu" id="profile-dropdown">
@@ -55,20 +47,23 @@
           <button class="dropdown-item routes" href="/">Log out</button>
         </div>
       </div>
+      <a href="#">
+        <span class="h3 navbar-text ml-3"> Project Fitness</span>
+      </a>
+    </span>
 
-
+    <button type="button" class="btn btn-secondary" class="workoutNav" onclick="location.href = '/workouts/all';">Workouts</button>
 
   </nav>
   <script>
     $("#userDropdown").hide();
-  </script>
-  {{{body}}}
+  </script> {{{body}}}
 
   <div class="footer">
-<p>
-<a class="footer-links" href="https://github.com/ejohn156/Project2">Github repo</a>
+    <p>
+      <a class="footer-links" href="https://github.com/ejohn156/Project2">Github repo</a>
 
-</p>
+    </p>
   </div>
   <script src="/js/signup.js"></script>
   <script src="/js/login.js"></script>
@@ -76,13 +71,8 @@
   <script>
     $("*").click(function (event) {
       event.preventDefault()
-<<<<<<< HEAD
-    })
-    
-=======
     });
->>>>>>> 3b849d4d407aa3ca9992a8967817f0a5ecfd11cf
-   
+
   </script>
 </body>
 

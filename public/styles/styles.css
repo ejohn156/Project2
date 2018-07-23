@@ -13,6 +13,9 @@ nav{
   background-color: gray;
   border-top: 5px solid rgb(255, 72, 0)
 }
+.container{
+  margin-bottom: 10%
+}
 
 .alert-msg {
   color: red;
@@ -89,7 +92,8 @@ nav{
   background-color: gray;
   border-top: 5px solid rgb(255, 72, 0);
   color: white;
-  text-align: left
+  text-align: left;
+  position: fixed
 }
 a:link {
   color: white;
@@ -102,4 +106,10 @@ a:hover {
 }
 a:active {
   color: white;
+}
+.welcome{
+  border-bottom: 2px solid rgba(255, 72, 0, 0.096)
+}
+.welcome:hover{
+  background-color: rgba(255, 72, 0, 0.096)
 }
