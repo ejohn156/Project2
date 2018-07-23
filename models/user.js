@@ -27,8 +27,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    // User Height
-    height: {
+    // User Height in feet
+    feet: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    // User Height in inches
+    inches: {
       type: DataTypes.INTEGER,
       allowNull: true
     },

@@ -1,5 +1,6 @@
 var db = require("../models");
 var caber = require("caber");
+var BMI = require("body-mass-index");
 
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -18,7 +19,6 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    console.log(req.user.name);
     var firstName = req.user.name.split(" ", 1);
     var user = {
       userName: firstName,
@@ -85,7 +85,19 @@ module.exports = function(app) {
   });
 
   app.get("/bmi", function(req, res) {
-    res.render("bmi");
+    var inches = req.user.inches + "in";
+    var feet = req.user.feet + "ft";
+    var height = feet + " " + inches;
+    var weight = req.user.weight + "lb";
+    var firstName = req.user.name.split(" ", 1);
+    var bmindex = BMI(height, weight);
+    var user = {
+      userName: firstName,
+      email: req.user.email,
+      bmi: bmindex
+      //workout: req.user.workout
+    };
+    res.render("bmi", user);
   });
 
   // Here we've add our isAuthenticated middleware to this route.

@@ -18,7 +18,6 @@ $(document).ready(function() {
   // When the form is submitted, we validate there's an email and password entered
   $("#loginBtn").on("click", function(event) {
     event.preventDefault();
-    console.log("login button works");
     var userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
@@ -55,7 +54,7 @@ $(document).ready(function() {
   $(".routes").on("click", function(event) {
     event.preventDefault();
     var route = $(this).attr("href");
-    console.log(route);
+    //console.log(route);
     location.replace(route);
   });
 });
