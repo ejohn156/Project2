@@ -47,7 +47,11 @@
 
       <div class="btn-group dropleft" id="userDropdown">
         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{userName}}
+         {{#if userData.name}}
+          {{userData.name}}
+          {{else}}
+          {{name}}
+          {{/if}}
         </button>
         <div class="dropdown-menu" id="profile-dropdown">
           <!-- Dropdown menu links -->
