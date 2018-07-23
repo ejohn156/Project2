@@ -12,7 +12,6 @@ module.exports = function(app) {
     // They won't get this or even be able to access this page if they aren't authed
     console.log(req.body);
     res.json("/profile");
-    
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to

@@ -1,11 +1,37 @@
-<form class="addBMI">
-    Create BMI:
-    <br>
-    <input type="text" class=e xercise name="exercise" placeholder="exercise">
-    <br> Height:
-    <br>
-    <input type="text" class=w eight name="weight" placeholder="weight">
-    <br> Weight:
-    <br>
-    <button id="createBMI">Create</button>
-</form>
+  
+{{!-- Bmi calculator --}}
+        <div class="col-md-2 offset-md-1 mt-5">
+            <form class="bmiCalc">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4>BMI Calculator</h4>
+                    </div>
+                    <div class="form-group w-75 px-3">
+                        <br>
+                        <label>Height</label>
+                        <input type="number" class="form-control heightFt" id="heightFt" placeholder="feet" min="1" max="8">
+                        <br>
+                        <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
+                    </div>
+                    <div class="form-group  w-75 px-3">
+                        <label for="exampleInputPassword1">Weight</label>
+                        <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
+                        <br>
+                        <div>
+                            <p class="bmiResult h6"></p>
+                        </div>
+                        <button type="submit" class="btn btn-success calculate">Calculate</button>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+<script>
+    $(".dropdown").css("display", "inline");
+    $(".login").hide();
+    $(".signUp").hide();
+</script>
