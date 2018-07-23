@@ -2,23 +2,22 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <h3>Name:{{workoutData.workoutName}}</h3>
-            <h6>Type: {{workoutData.workoutType}}</h6>
-            <h6>Description:{{workoutData.workoutDes}}</h6>
-            <h6>
-                Exercises:
-            </h6>
-            <ul>
-
-            </ul>
-
-            <div class="card" style="width: 100%;">
+            <div class="card text-center" style="margin-top:2%">
                 <div class="card-header">
+                    <h3>{{workoutData.workoutName}}</h3>
+                </div>
+                <div class="card-body">
+                     <h6>Description:{{workoutData.workoutDes}}</h6>
+                     <h6>Type: {{workoutData.workoutType}}</h6>
+                </div>
+                <div class="card-footer text-muted">
                     Exercises
                 </div>
+            </div>
+            <div class="card" style="width: 100%;">
                 <ul class="list-group list-group-flush">
                     {{#each workoutData.workoutString}}
-                    <li class="list-group-item">{{this.name}} + " " + {{this.comment}}</li>
+                    <li class="list-group-item">{{this.name}}: {{this.comment}}</li>
                     {{/each}}
                 </ul>
             </div>
