@@ -20,7 +20,9 @@ module.exports = function(app) {
   app.get("/profile", function(req, res) {
     console.log(req.user.name);
     var firstName = req.user.name.split(" ", 1);
-
+    db.User.findAll({}).then(function(userData){
+      console.log(User.name)
+    })
       var user = {
         userName: firstName,
         email: req.user.email,
