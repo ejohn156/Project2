@@ -51,12 +51,19 @@ $(document).ready(function() {
       });
   }
 
+  $("#logout").
+  // Route for logging user out
+  app.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/");
+  });
+
+
   // Click functions for profile dropdown
   $(".routes").on("click", function(event) {
     event.preventDefault();
     var route = $(this).attr("href");
     console.log(route);
     location.replace(route);
-    
   });
 });

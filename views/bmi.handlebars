@@ -1,20 +1,37 @@
   
-  <div class="form-row">
-    <div class="form-group col-md-1">
-        <p>Create BMI:</p>
-        <label for="inputHeight">Height</label>
-        <input type="text" class="form-control" id="inputHeightFeet" placeholder="ft">
-        <input type="text" class="form-control" id="inputHeightInches" placeholder="in">      
-        <label for="inputAddress2">Weight</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="lbs">
-    </div>
-    <div class="form-group col-md-11">
-    </div>
-  </div>
+{{!-- Bmi calculator --}}
+        <div class="col-md-2 offset-md-1 mt-5">
+            <form class="bmiCalc">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4>BMI Calculator</h4>
+                    </div>
+                    <div class="form-group w-75 px-3">
+                        <br>
+                        <label>Height</label>
+                        <input type="number" class="form-control heightFt" id="heightFt" placeholder="feet" min="1" max="8">
+                        <br>
+                        <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
+                    </div>
+                    <div class="form-group  w-75 px-3">
+                        <label for="exampleInputPassword1">Weight</label>
+                        <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
+                        <br>
+                        <div>
+                            <p class="bmiResult h6"></p>
+                        </div>
+                        <button type="submit" class="btn btn-success calculate">Calculate</button>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </form>
+        </div>
 
 
 
 <script>
+    $(".dropdown").css("display", "inline");
     $(".login").hide();
     $(".signUp").hide();
 </script>

@@ -35,7 +35,22 @@
         <span class="h3 navbar-text ml-3"> Project Fitness</span>
       </a>
     </span>
+    <div class="dropdown" id="userDropdown">
+  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{userName}}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button">Signed in as {{email}}</button>
+    <a class="dropdown-item routes" href="/profile">Your account</a>
+    <a class="dropdown-item routes" href="/bmi">Your body mass index</a>
+    <a class="dropdown-item routes" href="/workout">Your workouts</a>
+    <a class="dropdown-item routes" id="logout" href="/logout">Log out</a>
+  </div>
+</div>
   </nav>
+  <script>
+    $("#userDropdown").hide();
+  </script>
   {{{body}}}
   <script src="/js/signup.js"></script>
   <script src="/js/login.js"></script>
@@ -43,7 +58,7 @@
   <script>
     $("*").click(function (event) {
       event.preventDefault()
-    })
+    });
    
   </script>
 </body>
