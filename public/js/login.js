@@ -51,12 +51,6 @@ $(document).ready(function() {
       });
   }
 
-  $("#logout").
-  // Route for logging user out
-  app.get("/logout", function(req, res) {
-    req.logout();
-    res.redirect("/");
-  });
 
 
   // Click functions for profile dropdown
