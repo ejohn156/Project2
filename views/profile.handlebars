@@ -1,4 +1,3 @@
-    
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
@@ -12,12 +11,24 @@
                 </div>
                 <div class="userStats">
                     <p>Your BMI: {{bmi}}</p>
-                    <p>Chosen Workout: {{workout}}</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            
+        <div class="col-md-4 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h4>
+                        Workouts
+                    </h4>
+                </div>
+                <br>
+                <button type="button" class="btn btn-lg btn-light" id="create">Create</button>
+                <br>
+                <button type="button" class="btn btn-lg btn-light" id="viewAll">View All Workouts</button>
+                <br>
+                <button type="button" class="btn btn-lg btn-light" id="viewMy" value={{userName}}>{{userName}}'s Workouts</button>
+                <br>
+            </div>
         </div>
     </div>
 </div>
@@ -53,9 +64,22 @@
     });
     $(".login").hide();
     $(".signUp").hide();
-    $(".profile").click(function() {
-    $(".collapseLogin").toggleClass("show", false);
-});
+    $(".profile").click(function () {
+        $(".collapseLogin").toggleClass("show", false);
+    });
     $(".dropdown").css("display", "inline");
 
+    $("#create").click(function(event){
+        event.preventDefault()
+        location.replace("profile/workouts/create")
+    })
+    $("#viewAll").click(function(event){
+        event.preventDefault()
+        location.replace("profile/workouts/all")
+    })
+    $("#viewMy").click(function(event){
+        event.preventDefault()
+        var name = $("#viewMy").val()
+        location.replace("/workouts/creator/"+name)
+    })
 </script>

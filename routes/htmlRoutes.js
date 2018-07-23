@@ -20,26 +20,14 @@ module.exports = function(app) {
   app.get("/profile", function(req, res) {
     console.log(req.user.name);
     var firstName = req.user.name.split(" ", 1);
-    var user = {
-      userName: firstName,
-      email: req.user.email
-      //bmi: req.user.bmindex,
-      //workout: req.user.workout
-    };
-    res.render("profile", user);
-<<<<<<< HEAD
-  })
-  app.get("/workouts/all", function (req, res) {
-
-    db.Workouts.findAll({}).then(function (workoutData) {
-
-      workoutData.forEach(function (element) {
-        element.workoutString = caber.parse(element.workoutString)
-      })
-      res.render("workoutList", { workoutData: workoutData })
-
-=======
-  });
+      var user = {
+        userName: firstName,
+        email: req.user.email,
+  
+      }
+      res.render("profile", user);
+    })
+  
   app.get("/workouts/all", function(req, res) {
     db.Workouts.findAll({}).then(function(workoutData) {
       workoutData.forEach(function(element) {
@@ -47,7 +35,6 @@ module.exports = function(app) {
       });
       console.log(workoutData[0]);
       res.render("workoutList", { workoutData: workoutData });
->>>>>>> 3b849d4d407aa3ca9992a8967817f0a5ecfd11cf
     });
   });
 
@@ -55,6 +42,21 @@ module.exports = function(app) {
     db.Workouts.findAll({
       where: {
         workoutType: req.params.type
+      }
+    }).then(function(workoutData) {
+      workoutData.forEach(function(element) {
+        element.workoutString = caber.parse(element.workoutString);
+      });
+      console.log(workoutData[0]);
+      res.render("workoutList", { workoutData: workoutData });
+    });
+  });
+
+
+  app.get("/workouts/creator/:creator", function(req, res) {
+    db.Workouts.findAll({
+      where: {
+        creator: req.params.creator
       }
     }).then(function(workoutData) {
       workoutData.forEach(function(element) {
@@ -79,44 +81,36 @@ module.exports = function(app) {
     });
   });
 
-<<<<<<< HEAD
-  app.get("/workouts/ind/:id", function (req, res) {
-    console.log(req.params.id)
+  app.get("/workouts/ind/:id", function(req, res) {
+    console.log(req.params.id);
     db.Workouts.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function (workoutData) {
-
-     // workoutData.forEach(function (element) {
-        workoutData.workoutString = caber.parse(workoutData.workoutString)
-      //})
-      console.log(workoutData.workoutName)
-      res.render("indWorkout", { workoutData: workoutData })
-
-=======
-  app.get("/workouts/ind/:id", function(req, res) {
-    console.log(req.params.id);
-    db.Workouts.findAll({
-      where: {
-        id: req.params.id
-      }
     }).then(function(workoutData) {
-      workoutData.forEach(function(element) {
-        element.workoutString = caber.parse(element.workoutString);
-      });
+      workoutData.workoutString = caber.parse(workoutData.workoutString);
       console.log(workoutData.workoutName);
       res.render("indWorkout", { workoutData: workoutData });
->>>>>>> 3b849d4d407aa3ca9992a8967817f0a5ecfd11cf
     });
   });
 
-  app.get("/workouts/create", function(req, res) {
-    res.render("createWorkout");
+  app.get("/profile/workouts/create", function(req, res) {
+    var user = {name: req.user.name}
+    console.log(user.name)
+    res.render("createWorkout", user);
   });
 
   app.get("/profile", function(req, res) {
     res.render("profile");
+  });
+
+  app.get("/profile/workouts/all", function(req, res) {
+    db.Workouts.findAll({}).then(function(workoutData) {
+      workoutData.forEach(function(element) {
+        element.workoutString = caber.parse(element.workoutString);
+      });
+      res.render("workoutList", { workoutData: workoutData });
+    });
   });
 
   app.get("/bmi", function(req, res) {
