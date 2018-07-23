@@ -85,9 +85,6 @@ module.exports = function(app) {
     res.render("createWorkout");
   });
 
-  app.get("/profile", function(req, res) {
-    res.render("profile");
-  });
 
   app.get("/bmi", function(req, res) {
     res.render("bmi");
