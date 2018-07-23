@@ -20,14 +20,16 @@ module.exports = function(app) {
   app.get("/profile", function(req, res) {
     console.log(req.user.name);
     var firstName = req.user.name.split(" ", 1);
-    var user = {
-      userName: firstName,
-      email: req.user.email
-      //bmi: req.user.bmindex,
-      //workout: req.user.workout
-    };
-    res.render("profile", user);
-  });
+
+      var user = {
+        userName: firstName,
+        email: req.user.email,
+  
+      }
+      res.render("profile", user);
+    })
+  
+
   app.get("/workouts/all", function(req, res) {
     db.Workouts.findAll({}).then(function(workoutData) {
       workoutData.forEach(function(element) {
@@ -51,6 +53,22 @@ module.exports = function(app) {
     });
   });
 
+
+  app.get("/workouts/creator/:creator", function(req, res) {
+    db.Workouts.findAll({
+      where: {
+        creator: req.params.creator
+      }
+    }).then(function(workoutData) {
+      workoutData.forEach(function(element) {
+        element.workoutString = caber.parse(element.workoutString);
+      });
+      console.log(workoutData[0]);
+      res.render("workoutList", { workoutData: workoutData });
+    });
+  });
+
+
   app.get("/workouts/name/:name", function(req, res) {
     db.Workouts.findAll({
       where: {
@@ -64,7 +82,6 @@ module.exports = function(app) {
       res.render("workoutList", { workoutData: workoutData });
     });
   });
-
   app.get("/workouts/ind/:id", function(req, res) {
     console.log(req.params.id);
     db.Workouts.findOne({
@@ -72,17 +89,34 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(workoutData) {
-      // workoutData.forEach(function (element) {
+
       workoutData.workoutString = caber.parse(workoutData.workoutString);
-      //})
+
       console.log(workoutData.workoutName);
       res.render("indWorkout", { workoutData: workoutData });
     });
   });
 
-  app.get("/workouts/create", function(req, res) {
-    res.render("createWorkout");
+  app.get("/profile/workouts/create", function(req, res) {
+    var user = {name: req.user.name}
+    console.log(user.name)
+    res.render("createWorkout", user);
   });
+
+
+  app.get("/profile", function(req, res) {
+    res.render("profile");
+  });
+
+  app.get("/profile/workouts/all", function(req, res) {
+    db.Workouts.findAll({}).then(function(workoutData) {
+      workoutData.forEach(function(element) {
+        element.workoutString = caber.parse(element.workoutString);
+      });
+      res.render("workoutList", { workoutData: workoutData });
+    });
+  });
+
 
   app.get("/bmi", function(req, res) {
     res.render("bmi");

@@ -9,6 +9,7 @@
                         <h4>Workout Creater</h4>
                     </div>
                     <div class="form-group w-75 px-3">
+                        <h4>Creator: <span class="creator" id={{name}}>{{name}}</span></h4>
                         <br>
                         <label>Workout Name</label>
                         <input type="text" class="form-control" id="workoutName" placeholder="name" style="width: 80%">
@@ -90,13 +91,14 @@
         $(".submitWorkout").click("submit", function (event) {
             event.preventDefault();
             var newWorkout = {
+                creator: $(".creator").attr("id"),
                 workoutName: $("#workoutName").val().trim(),
                 workoutType: $("#workoutType").val().trim(),
                 workoutDes: $("#workoutDes").val().trim(),
                 workoutString: workoutString
             }
             console.log(newWorkout)
-            $.post("../api/workouts", newWorkout)
+            $.post("../../api/workouts", newWorkout)
         });
     });
     $(".login").hide()
