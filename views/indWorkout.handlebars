@@ -11,11 +11,11 @@
                      <h6>Type: {{workoutData.workoutType}}</h6>
                 </div>
                 <div class="card-footer text-muted">
-                    Exercises
+                   <button type="button" class="btn btn-primary" id="exerciseBtn">Exercises</button>
                 </div>
             </div>
             <div class="card" style="width: 100%;">
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="exerciseList">
                     {{#each workoutData.workoutString}}
                     <li class="list-group-item">{{this.name}}: {{this.comment}}</li>
                     {{/each}}
@@ -24,3 +24,12 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#exerciseList").hide()
+    })
+    $("#exerciseBtn").click(function(event){
+        
+        $("#exerciseList").toggle("slow",console.log("success"));
+    })
+</script>

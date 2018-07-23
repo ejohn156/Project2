@@ -101,3 +101,18 @@
         </div>
     </div>
 </div>
+<script>
+    $(".calculate").click( function(event) {
+        event.preventDefault()
+        $(".bmiResult").empty()
+  var heightIn = $(".heightIn").val().trim();
+   var heightFt = $(".heightFt").val().trim();
+   var height = parseInt(heightIn) +  parseInt(heightFt * 12);
+   var weight = parseInt($(".weight").val().trim());
+   var bmi = weight / Math.pow(height, 2) * 703
+   
+   var newBmi = $("<h4>")
+       newBmi.append(bmi.toFixed(2))
+   $(".bmiResult").append(newBmi);
+ });
+</script>
