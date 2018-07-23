@@ -15,12 +15,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/styles.css">
+  
 
   <title>Project Fitness</title>
 </head>
 
 <body>
   <nav class="navbar navbar-light">
+
     <span>
       <button type="submit" class="btn btn-dark btn-sm login" data-toggle="collapse" data-target=".collapseLogin" role="button"
         aria-expanded="false" aria-controls="multiCollapseExample1">
@@ -35,22 +37,27 @@
         <span class="h3 navbar-text ml-3"> Project Fitness</span>
       </a>
     </span>
-<<<<<<< HEAD
+
       <button type="button" class="btn btn-secondary" class="workoutNav" onclick="location.href = '/workouts/all';">Workouts</button>
-=======
-    <div class="dropdown" id="userDropdown">
-  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{userName}}
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button">Signed in as {{email}}</button>
-    <a class="dropdown-item routes" href="/profile">Your account</a>
-    <a class="dropdown-item routes" href="/bmi">Your body mass index</a>
-    <a class="dropdown-item routes" href="/workout">Your workouts</a>
-    <a class="dropdown-item routes" href="/">Log out</a>
-  </div>
-</div>
->>>>>>> 3b849d4d407aa3ca9992a8967817f0a5ecfd11cf
+
+
+        <!-- Default dropleft button -->
+      <div class="btn-group dropleft" id="userDropdown">
+        <button type="button" class="btn btn-alert dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{userName}}
+        </button>
+        <div class="dropdown-menu" id="profile-dropdown">
+          <!-- Dropdown menu links -->
+          <button class="dropdown-item routes" type="button">Signed in as {{email}}</button>
+          <button class="dropdown-item routes" href="/profile">Your account</button>
+          <button class="dropdown-item routes" href="/bmi">Your body mass index</button>
+          <button class="dropdown-item routes" href="/workout">Your workouts</button>
+          <button class="dropdown-item routes" href="/">Log out</button>
+        </div>
+      </div>
+
+
+
   </nav>
   <script>
     $("#userDropdown").hide();
