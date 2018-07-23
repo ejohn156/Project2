@@ -28,7 +28,6 @@ module.exports = function(app) {
     };
     res.render("profile", user);
   });
-
   app.get("/workouts/all", function(req, res) {
     db.Workouts.findAll({}).then(function(workoutData) {
       workoutData.forEach(function(element) {
@@ -92,17 +91,6 @@ module.exports = function(app) {
 
   app.get("/bmi", function(req, res) {
     res.render("bmi");
-  });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
   });
 
   // Here we've add our isAuthenticated middleware to this route.

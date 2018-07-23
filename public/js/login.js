@@ -51,8 +51,6 @@ $(document).ready(function() {
       });
   }
 
-
-
   // Click functions for profile dropdown
   $(".routes").on("click", function(event) {
     event.preventDefault();
