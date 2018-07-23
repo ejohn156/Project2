@@ -50,10 +50,13 @@
     </div>
 </div>
 <script>
+    $("#userDropdown").css("display", "inline");
+    $(".login").hide();
+    $(".signUp").hide();
     $(".workoutRow").click(function (event) {
         event.preventDefault()
-
-        var workoutId = $(".workoutRow").attr("id")
+        
+        var workoutId = $(this).attr("id")
         console.log(workoutId)
         location.replace("/workouts/ind/" + workoutId)
     })

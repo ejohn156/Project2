@@ -23,6 +23,7 @@ $(document).ready(function() {
     inches.val("");
     feet.val("");
     weight.val("");
+    setTimeout(function(){location.replace("../profile")}, 500)
   });
 
   // Function to calculate BMI
@@ -36,7 +37,7 @@ $(document).ready(function() {
         weight: weight
       }
     }).then(function(data) {
-      // console.log(data);
+      
     });
   }
 });
