@@ -26,10 +26,11 @@ app.use(bodyParser.urlencoded({ extended: true })); //middleware code comes from
 // parse application/json
 app.use(bodyParser.json());
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // Static directory
 app.use(express.static("public")); //basically assets folder
