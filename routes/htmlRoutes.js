@@ -18,8 +18,8 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    console.log(req.user.name);
     var firstName = req.user.name.split(" ", 1);
+<<<<<<< HEAD
     db.User.findAll({}).then(function(userData){
       console.log(User.name)
     })
@@ -31,6 +31,15 @@ module.exports = function(app) {
       res.render("profile", user);
     })
   
+=======
+
+    var user = {
+      userName: firstName,
+      email: req.user.email
+    };
+    res.render("profile", user);
+  });
+>>>>>>> cae52acc9f450bdf2f987fc5537c78330ef66859
 
   app.get("/workouts/all", function(req, res) {
     db.Workouts.findAll({}).then(function(workoutData) {
@@ -55,7 +64,6 @@ module.exports = function(app) {
     });
   });
 
-
   app.get("/workouts/creator/:creator", function(req, res) {
     db.Workouts.findAll({
       where: {
@@ -69,7 +77,6 @@ module.exports = function(app) {
       res.render("workoutList", { workoutData: workoutData });
     });
   });
-
 
   app.get("/workouts/name/:name", function(req, res) {
     db.Workouts.findAll({
@@ -91,7 +98,6 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(workoutData) {
-
       workoutData.workoutString = caber.parse(workoutData.workoutString);
 
       console.log(workoutData.workoutName);
@@ -100,14 +106,9 @@ module.exports = function(app) {
   });
 
   app.get("/profile/workouts/create", function(req, res) {
-    var user = {name: req.user.name}
-    console.log(user.name)
+    var user = { name: req.user.name };
+    console.log(user.name);
     res.render("createWorkout", user);
-  });
-
-
-  app.get("/profile", function(req, res) {
-    res.render("profile");
   });
 
   app.get("/profile/workouts/all", function(req, res) {
@@ -119,10 +120,17 @@ module.exports = function(app) {
     });
   });
 
-
   app.get("/bmi", function(req, res) {
-    res.render("bmi");
+    console.log(req.user.bmindex);
+    var firstName = req.user.name.split(" ", 1);
+    var user = {
+      userName: firstName,
+      email: req.user.email,
+      bmi: req.user.bmindex
+    };
+    res.render("bmi", user);
   });
+
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page

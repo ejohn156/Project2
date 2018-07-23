@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var BMI = require("body-mass-index");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -10,28 +11,56 @@ module.exports = function(app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the profile page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    console.log(req.body);
+    //console.log(req.body);
+
     res.json("/profile");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", function(req, res) {
-    console.log(req.body);
+  app.post("/api/member", function(req, res) {
+    //console.log(req.body);
     db.User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
       .then(function(userData) {
-        console.log(userData);
+        //console.log(userData);
       })
       .catch(function(err) {
         console.log(err);
         res.json(err);
         // res.status(422).json(err.errors[0].message);
       });
+  });
+
+  // Update Route
+  app.put("/api/member", function(req, res) {
+    //BMI Calculatiom
+    var inches = req.body.inches + "in";
+    var feet = req.body.feet + "ft";
+    var height = feet + " " + inches;
+    var weight = req.body.weight + "lb";
+    var bmindex = BMI(weight, height);
+    console.log(bmindex);
+
+    db.User.update(
+      {
+        inches: req.body.inches,
+        feet: req.body.feet,
+        weight: req.body.weight,
+        bmindex: bmindex
+      },
+      {
+        where: {
+          id: req.user.id
+        }
+      }
+    ).then(function(data) {
+      console.log(data);
+    });
   });
 
   // Route for logging user out
@@ -53,7 +82,8 @@ module.exports = function(app) {
         email: req.body.email,
         id: req.body.id,
         bmi: req.body.bmindex,
-        height: req.body.height,
+        feet: req.body.feet,
+        inches: req.body.inches,
         weight: req.body.weight
       });
     }
