@@ -52,13 +52,13 @@ $(document).ready(function() {
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
     //console.log(name + " " + email + " " + password);
-    $.post("/api/signup", {
+    $.post("/api/member", {
       name: name,
       email: email,
       password: password
     })
       .then(function(data) {
-        console.log(data);
+        //console.log(data);
         // window.location.replace(data);
       })
       // If there's an error, handle it by throwing up a boostrap alert
