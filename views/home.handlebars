@@ -11,11 +11,11 @@
                             <input type="email" class="form-control " id="loginEmail" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group w-95 px-2">
-                            <input type="password" class="form-control password" id="loginPassword" placeholder="Password" name="password">
-                            {{!-- Alerts error message  --}}
+                            <input type="password" class="form-control password" id="loginPassword" placeholder="Password" name="password"> {{!-- Alerts error message --}}
                             <div style="display: none" id="alert">
                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                <span class="sr-only">Error:</span> <span class="alert-msg">Incorrect Email or Password</span>
+                                <span class="sr-only">Error:</span>
+                                <span class="alert-msg">Incorrect Email or Password</span>
                             </div>
                             <button type="submit" class="btn btn-dark btn-sm loginBtn" id="loginBtn">Login</button>
                         </div>
@@ -45,74 +45,102 @@
                 </div>
             </form>
         </div>
-        {{!-- Login end --}} {{!-- Bmi calculator --}}
-        <div class="col-md-2 offset-md-1 mt-5">
+        {{!-- Login end --}}
+        <div class="col-md-4 mt-5">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h4 class="card-title">Welcome to Project Fitness</h4>
+                </div>
+                <div class="welcome">
+                    <h5 class="m-3 text-left">
+                        Get the most out of your workout experience
+                        <button class="btn btn-sm btn-dark p-0 loginBtn">Login</button>  or <button class="btn btn-sm btn-light p-0 join">Sign Up</button> to get started!
+                    </h5>
+                </div>
+                <div class="welcome">
+                    <h5 class="m-3 text-left">
+                         Create your own custom routines or choose from any posted in the community 
+                    </h5>
+                </div>
+                 <div class="welcome">
+                    <h5 class="m-3 text-left">
+                        Calculate your bmi 
+                    </h5>
+                </div>
+                 <div class="welcome">
+                    <h5 class="m-3 text-left">
+                        Track your progress 
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-5">
             <form class="bmiCalc">
                 <div class="card ">
                     <div class="card-header">
                         <h4>BMI Calculator</h4>
                     </div>
-                    <div class="form-group w-75 px-3">
-                        <br>
-                        <label>Height</label>
-                        <input type="number" class="form-control heightFt" id="heightFt" placeholder="feet" min="1" max="8">
-                        <br>
-                        <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
-                    </div>
-                    <div class="form-group  w-75 px-3">
-                        <label for="exampleInputPassword1">Weight</label>
-                        <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
-                        <br>
-                        <div>
-                            <p class="bmiResult h6"></p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group w-75 px-3">
+                                <br>
+                                <label>Height</label>
+                                <input type="number" class="form-control heightFt" id="heightFt" placeholder="feet" min="1" max="8">
+                                <br>
+                                <input type="number" class="form-control heightIn" id="heightIn" placeholder="inches" min="0" max="11">
+                            </div>
+                            <div class="form-group  w-75 px-3">
+                                <label for="exampleInputPassword1">Weight</label>
+                                <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
+                                <br>
+                                <div>
+                                    <p class="bmiResult h6"></p>
+                                </div>
+                                <button type="submit" class="btn btn-light calculate">Calculate</button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-light calculate">Calculate</button>
+                        <div class="col-md-6">
+                            <p>
+
+                                <br>
+                                <br>
+                                <strong>Good</strong>
+                                18.5 – 24.9
+                                <br>
+                                <strong>Overweight</strong> 25 – 29.9
+                                <br>
+                                <strong>Obese(1)</strong> 30 – 34.9
+                                <br>
+                                <strong> Obese(2)</strong> 35 – 39
+                                <br>
+                                <strong>Obese (3)</strong> 40 – 48
+                                <br>
+                                <small> *NovantHealth.org</small>
+
+                            </p>
+                        </div>
                     </div>
                     <div class="card-footer">
                     </div>
                 </div>
             </form>
         </div>
-        {{!-- Bmi end --}} {{!-- Workouts data dump --}}
-        <div class="col-md-4 mt-5">
-            <div class="card text-center">
-                <div class="card-header">
-                    <h4 class="card-title">Workouts</h4>
-                </div>
-                <table class="table table-hover table-dark" style="width:90% text-align: center">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each workoutData}}
-                        <tr class="workout" data-workoutId={{this.id}}>
-                            <td>{{this.workoutName}}</td>
-                            <td>{{this.workoutType}}</td>
-                            <td>{{this.workoutDes}}</td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        {{!-- Bmi end --}}
+
     </div>
 </div>
 <script>
-    $(".calculate").click( function(event) {
+    $(".calculate").click(function (event) {
         event.preventDefault()
         $(".bmiResult").empty()
-  var heightIn = $(".heightIn").val().trim();
-   var heightFt = $(".heightFt").val().trim();
-   var height = parseInt(heightIn) +  parseInt(heightFt * 12);
-   var weight = parseInt($(".weight").val().trim());
-   var bmi = weight / Math.pow(height, 2) * 703
-   
-   var newBmi = $("<h4>")
-       newBmi.append(bmi.toFixed(2))
-   $(".bmiResult").append(newBmi);
- });
+        var heightIn = $(".heightIn").val().trim();
+        var heightFt = $(".heightFt").val().trim();
+        var height = parseInt(heightIn) + parseInt(heightFt * 12);
+        var weight = parseInt($(".weight").val().trim());
+        var bmi = weight / Math.pow(height, 2) * 703
+
+        var newBmi = $("<h4>")
+        newBmi.append(bmi.toFixed(2))
+        $(".bmiResult").append(newBmi);
+    });
 </script>
