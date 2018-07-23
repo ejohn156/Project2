@@ -29,5 +29,13 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  Workouts.associate = function(models) {
+    models.Workouts.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Workouts;
 };

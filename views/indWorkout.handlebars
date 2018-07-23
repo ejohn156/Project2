@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 <h3>Name:{{workoutName}}</h3>
@@ -14,4 +15,40 @@
 
 <script>
     $("#userDropdown").css("display", "inline");
+=======
+<div class="containder">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card text-center" style="margin-top:2%">
+                <div class="card-header">
+                    <h3>{{workoutData.workoutName}}</h3>
+                </div>
+                <div class="card-body">
+                     <h6>Description:{{workoutData.workoutDes}}</h6>
+                     <h6>Type: {{workoutData.workoutType}}</h6>
+                </div>
+                <div class="card-footer text-muted">
+                   <button type="button" class="btn btn-primary" id="exerciseBtn">Exercises</button>
+                </div>
+            </div>
+            <div class="card" style="width: 100%;">
+                <ul class="list-group list-group-flush" id="exerciseList">
+                    {{#each workoutData.workoutString}}
+                    <li class="list-group-item">{{this.name}}: {{this.comment}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#exerciseList").hide()
+    })
+    $("#exerciseBtn").click(function(event){
+        
+        $("#exerciseList").toggle("slow",console.log("success"));
+    })
+>>>>>>> df783ce7c2023c9da5fd734a069fd85ecd70c9aa
 </script>

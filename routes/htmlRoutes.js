@@ -33,7 +33,6 @@ module.exports = function(app) {
       workoutData.forEach(function(element) {
         element.workoutString = caber.parse(element.workoutString);
       });
-      console.log(workoutData[0]);
       res.render("workoutList", { workoutData: workoutData });
     });
   });
@@ -68,14 +67,14 @@ module.exports = function(app) {
 
   app.get("/workouts/ind/:id", function(req, res) {
     console.log(req.params.id);
-    db.Workouts.findAll({
+    db.Workouts.findOne({
       where: {
         id: req.params.id
       }
     }).then(function(workoutData) {
-      workoutData.forEach(function(element) {
-        element.workoutString = caber.parse(element.workoutString);
-      });
+      // workoutData.forEach(function (element) {
+      workoutData.workoutString = caber.parse(workoutData.workoutString);
+      //})
       console.log(workoutData.workoutName);
       res.render("indWorkout", { workoutData: workoutData });
     });
@@ -84,7 +83,6 @@ module.exports = function(app) {
   app.get("/workouts/create", function(req, res) {
     res.render("createWorkout");
   });
-
 
   app.get("/bmi", function(req, res) {
     res.render("bmi");
