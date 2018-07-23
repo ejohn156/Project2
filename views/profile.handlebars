@@ -64,10 +64,11 @@
     });
     $(".login").hide();
     $(".signUp").hide();
-    $(".profile").click(function () {
-        $(".collapseLogin").toggleClass("show", false);
-    });
-    $(".dropdown").css("display", "inline");
+
+    $(".profile").click(function() {
+    $(".collapseLogin").toggleClass("show", false);
+});
+    $("#userDropdown").css("display", "inline");
 
     $("#create").click(function(event){
         event.preventDefault()

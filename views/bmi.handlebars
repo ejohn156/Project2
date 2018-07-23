@@ -1,7 +1,7 @@
   
 {{!-- Bmi calculator --}}
         <div class="col-md-2 offset-md-1 mt-5">
-            <form class="bmiCalc">
+            <form class="bmiCalc" id="userCalcForm">
                 <div class="card ">
                     <div class="card-header">
                         <h4>BMI Calculator</h4>
@@ -18,7 +18,7 @@
                         <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
                         <br>
                         <div>
-                            <p class="bmiResult h6"></p>
+                            <p class="bmiResult h6" id="userCalcResult"></p>
                         </div>
                         <button type="submit" class="btn btn-success calculate">Calculate</button>
                     </div>
@@ -31,7 +31,7 @@
 
 
 <script>
-    $(".dropdown").css("display", "inline");
+    $("#userDropdown").css("display", "inline");
     $(".login").hide();
     $(".signUp").hide();
 </script>

@@ -30,7 +30,6 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-  
 
   // app.post('/',
   //   passport.authenticate('home', {

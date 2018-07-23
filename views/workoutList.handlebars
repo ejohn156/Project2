@@ -52,6 +52,7 @@
 <script>
     $(".workoutRow").click(function (event) {
         event.preventDefault()
+
         var workoutId = $(".workoutRow").attr("id")
         console.log(workoutId)
         location.replace("/workouts/ind/" + workoutId)
@@ -75,5 +76,6 @@
         event.preventDefault()
         location.replace("/workouts/all")
     })
+
 
 </script>

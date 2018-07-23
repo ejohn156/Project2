@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+
+
+<h3>Name:{{workoutName}}</h3>
+<h6>Type: {{workoutType}}</h6>
+<h6>Description:{{workoutDes}}</h6>
+<h6>
+    Exercises:
+</h6>
+<ul>
+    {{#each workoutString}}
+    <li>{{this.name}} + " | " + {{this.comment}}</li>
+    {{/each}}
+</ul>
+
+<script>
+    $("#userDropdown").css("display", "inline");
+=======
 <div class="containder">
     <div class="row">
         <div class="col-md-3"></div>
@@ -32,4 +50,5 @@
         
         $("#exerciseList").toggle("slow",console.log("success"));
     })
+>>>>>>> df783ce7c2023c9da5fd734a069fd85ecd70c9aa
 </script>

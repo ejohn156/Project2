@@ -20,6 +20,7 @@ module.exports = function(app) {
   app.get("/profile", function(req, res) {
     console.log(req.user.name);
     var firstName = req.user.name.split(" ", 1);
+
       var user = {
         userName: firstName,
         email: req.user.email,
@@ -28,12 +29,12 @@ module.exports = function(app) {
       res.render("profile", user);
     })
   
+
   app.get("/workouts/all", function(req, res) {
     db.Workouts.findAll({}).then(function(workoutData) {
       workoutData.forEach(function(element) {
         element.workoutString = caber.parse(element.workoutString);
       });
-      console.log(workoutData[0]);
       res.render("workoutList", { workoutData: workoutData });
     });
   });
@@ -67,6 +68,7 @@ module.exports = function(app) {
     });
   });
 
+
   app.get("/workouts/name/:name", function(req, res) {
     db.Workouts.findAll({
       where: {
@@ -80,7 +82,6 @@ module.exports = function(app) {
       res.render("workoutList", { workoutData: workoutData });
     });
   });
-
   app.get("/workouts/ind/:id", function(req, res) {
     console.log(req.params.id);
     db.Workouts.findOne({
@@ -88,7 +89,9 @@ module.exports = function(app) {
         id: req.params.id
       }
     }).then(function(workoutData) {
+
       workoutData.workoutString = caber.parse(workoutData.workoutString);
+
       console.log(workoutData.workoutName);
       res.render("indWorkout", { workoutData: workoutData });
     });
@@ -99,6 +102,7 @@ module.exports = function(app) {
     console.log(user.name)
     res.render("createWorkout", user);
   });
+
 
   app.get("/profile", function(req, res) {
     res.render("profile");
@@ -112,6 +116,7 @@ module.exports = function(app) {
       res.render("workoutList", { workoutData: workoutData });
     });
   });
+
 
   app.get("/bmi", function(req, res) {
     res.render("bmi");
