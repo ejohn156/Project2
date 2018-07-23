@@ -29,7 +29,7 @@ module.exports = function (app) {
       //workout: req.user.workout
     };
     res.render("profile", user);
-    
+  })
   app.get("/workouts/all", function (req, res) {
 
     db.Workouts.findAll({}).then(function (workoutData) {
