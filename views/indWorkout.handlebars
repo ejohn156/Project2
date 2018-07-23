@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-
-
-<h3>Name:{{workoutName}}</h3>
-<h6>Type: {{workoutType}}</h6>
-<h6>Description:{{workoutDes}}</h6>
-<h6>
-    Exercises:
-</h6>
-<ul>
-    {{#each workoutString}}
-    <li>{{this.name}} + " | " + {{this.comment}}</li>
-    {{/each}}
-</ul>
-
-<script>
-    $("#userDropdown").css("display", "inline");
-=======
 <div class="containder">
     <div class="row">
         <div class="col-md-3"></div>
@@ -25,6 +7,7 @@
                     <h3>{{workoutData.workoutName}}</h3>
                 </div>
                 <div class="card-body">
+                     <h6>Creator: {{workoutData.creator}}</h6>
                      <h6>Description:{{workoutData.workoutDes}}</h6>
                      <h6>Type: {{workoutData.workoutType}}</h6>
                 </div>
@@ -38,6 +21,7 @@
                     <li class="list-group-item">{{this.name}}: {{this.comment}}</li>
                     {{/each}}
                 </ul>
+                <button class="btn btn-light btn-lg" id="returnWk">Return To Workouts</button>
             </div>
         </div>
     </div>
@@ -50,5 +34,8 @@
         
         $("#exerciseList").toggle("slow",console.log("success"));
     })
->>>>>>> df783ce7c2023c9da5fd734a069fd85ecd70c9aa
+    $("#returnWk").click(function(event){
+        event.preventDefault()
+        location.replace("/workouts/all")
+    })
 </script>

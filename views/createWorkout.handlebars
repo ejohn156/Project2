@@ -1,4 +1,4 @@
-<div class="container-fluid mt-2">
+<div class="container-fluid mt-2" style="margin-bottom:2%">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5">
@@ -35,10 +35,10 @@
                             <input type="number" class="form-control" id="reps" name="reps" placeholder="reps">
                             <br>
                             <br>
-                            <button type="submit" class="btn btn-info" id="subEx">Add Exercise</button>
+                            <button type="submit" class="btn btn-light btn-md" id="subEx">Add Exercise</button>
                         </form>
                     </div>
-                    <button type="submit" class="btn btn-info submitWorkout">Submit Workout</button>
+                    <button type="submit" class="btn btn-light btn-lg submitWorkout">Submit Workout</button>
 
                     <div class="card-footer">
                     </div>
@@ -62,7 +62,9 @@
 </div>
 <script>
     $(document).ready(function () {
-
+        $("#userDropdown").css("display", "inline");
+    $(".login").hide();
+    $(".signUp").hide();
         console.log("document ready");
         var workoutString = ""
         //text box questions for exercise, weight, reps and sets
@@ -99,9 +101,11 @@
             }
             console.log(newWorkout)
             $.post("../../api/workouts", newWorkout)
+            setTimeout(function(){location.replace("/profile")})
         });
-    });
-    $(".login").hide()
+        $(".login").hide()
     $(".signUp").hide()
     $("#userDropdown").css("display", "inline");
+    });
+    
 </script>

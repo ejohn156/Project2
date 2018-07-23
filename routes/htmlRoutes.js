@@ -18,28 +18,23 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    var firstName = req.user.name.split(" ", 1);
-<<<<<<< HEAD
-    db.User.findAll({}).then(function(userData){
-      console.log(User.name)
-    })
-      var user = {
-        userName: firstName,
-        email: req.user.email,
-  
-      }
-      res.render("profile", user);
-    })
-  
-=======
+    // var firstName = req.user.name.split(" ", 1);
 
-    var user = {
-      userName: firstName,
-      email: req.user.email
-    };
-    res.render("profile", user);
+    // var user = {
+    //   userName: firstName,
+    //   email: req.user.email
+    // };
+    db.User.findOne({
+      where: 
+      {name: req.user.name}
+    }).then(function(userData){
+        console.log(userData.name)
+        console.log(userData.bmindex)
+        res.render("profile", {userData: userData});
+        
+    })
+    
   });
->>>>>>> cae52acc9f450bdf2f987fc5537c78330ef66859
 
   app.get("/workouts/all", function(req, res) {
     db.Workouts.findAll({}).then(function(workoutData) {
