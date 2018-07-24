@@ -1,6 +1,6 @@
-<div class="container mt-5">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3 offset-md-2 mt-5">
             <div class="card">
                 <div class="card-header">
                     <h4 style="text-align: center">
@@ -36,7 +36,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-3 offset-md-1 mt-5">
+
             <div class="card">
                 <div class="card-header">
                     <h4 style="text-align: center">
@@ -50,6 +52,15 @@
                 <br>
                 <button type="button" class="btn btn-lg btn-light" id="viewMy" value={{userData.name}}>{{userData.name}}'s Workouts</button>
                 <br>
+            </div>
+        </div>
+        <div class="collapse col-md-2 offset-md-1 mt-0" id="profileCollapse">
+            <div class="card card-body">
+                    <button class="dropdown-item routes" type="button">Signed in as {{email}}</button>
+                    <button class="dropdown-item routes" href="/profile">Your account</button>
+                    <button class="dropdown-item routes" href="/bmi">Your body mass index</button>
+                    <button class="dropdown-item routes" href="/workout">Your workouts</button>
+                    <button class="dropdown-item routes" href="/">Log out</button>
             </div>
         </div>
     </div>
@@ -79,7 +90,6 @@
     </div>
 </div>
 
-
 <script>
     $("*").click(function (event) {
         event.preventDefault()
@@ -87,23 +97,23 @@
     $(".login").hide();
     $(".signUp").hide();
 
-    $(".profile").click(function() {
-    $(".collapseLogin").toggleClass("show", false);
-});
+    $(".profile").click(function () {
+        $(".collapseLogin").toggleClass("show", false);
+    });
     $("#userDropdown").css("display", "inline");
 
-    $("#create").click(function(event){
+    $("#create").click(function (event) {
         event.preventDefault()
         location.replace("profile/workouts/create")
     })
-    $("#viewAll").click(function(event){
+    $("#viewAll").click(function (event) {
         event.preventDefault()
         location.replace("/workouts/all")
     })
-    $("#viewMy").click(function(event){
+    $("#viewMy").click(function (event) {
         event.preventDefault()
         var name = $("#viewMy").val()
-        location.replace("/workouts/creator/"+name)
+        location.replace("/workouts/creator/" + name)
     })
     $("#update").click(function(event){
         event.preventDefault()
