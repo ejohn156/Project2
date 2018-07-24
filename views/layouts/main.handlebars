@@ -39,11 +39,14 @@
       
     </span>
 
+      <!-- Default dropleft button -->
+
 
 
 
 
         <!-- Default dropleft button -->
+
 
       <div class="btn-group dropleft" id="userDropdown">
         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,16 +65,19 @@
           <button class="dropdown-item routes" href="/">Log out</button>
         </div>
       </div>
+
 {{!-- <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#profileCollapse" aria-expanded="false" aria-controls="collapseExample">
   {{#if userData.name}}
     {{userData.name}}
   {{else}}
   profile
   {{/if}}
+
   </button> --}}
   </nav>
   <script>
     $("#userDropdown").hide();
+    $("#profileCollapse").hide();
   </script> {{{body}}}
 
   <div class="footer" style="height:4%">

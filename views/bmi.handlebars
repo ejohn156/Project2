@@ -1,32 +1,68 @@
-  
-{{!-- Bmi calculator --}}
-        <div class="col-md-6 offset-md-3 mt-5">
+ {{!-- Bmi calculator --}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-md-3 mt-5">
             <form class="bmiCalc" id="userCalcForm">
                 <div class="card ">
                     <div class="card-header">
                         <h4>BMI Calculator</h4>
                     </div>
-                    <div class="form-group w-50 px-3">
-                        <br>
-                        <label>Height</label>
-                        <input type="number" class="form-control feet" id="feet" placeholder="feet" min="1" max="8">
-                        <br>
-                        <input type="number" class="form-control inches" id="inches" placeholder="inches" min="0" max="11">
-                    </div>
-                    <div class="form-group  w-50 px-3">
-                        <label for="exampleInputPassword1">Weight</label>
-                        <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
-                        <br>
-                        <div>
-                            <p class="bmiResult h6" id="userCalcResult"></p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group w-50 px-3">
+                                <br>
+                                <label>Height</label>
+                                <input type="number" class="form-control feet" id="feet" placeholder="feet" min="1" max="8">
+                                <br>
+                                <input type="number" class="form-control inches" id="inches" placeholder="inches" min="0" max="11">
+                            </div>
+                            <div class="form-group  w-50 px-3">
+                                <label for="exampleInputPassword1">Weight</label>
+                                <input type="number" class="form-control weight" id="weight" placeholder="lbs" min="0" max="2000">
+                                <br>
+                                <div>
+                                    <p class="bmiResult h6" id="userCalcResult"></p>
+                                </div>
+                                <button type="submit" class="btn btn-light calculate">Calculate</button>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-success calculate">Calculate</button>
+                        <div class="col-md-6">
+                                <p>
+
+                                    <br>
+                                    <br>
+                                    <strong>Good</strong>
+                                    18.5 – 24.9
+                                    <br>
+                                    <strong>Overweight</strong> 25 – 29.9
+                                    <br>
+                                    <strong>Obese(1)</strong> 30 – 34.9
+                                    <br>
+                                    <strong> Obese(2)</strong> 35 – 39
+                                    <br>
+                                    <strong>Obese (3)</strong> 40 – 48
+                                    <br>
+                                    <small> *NovantHealth.org</small>
+                                </p>
+                        </div>
                     </div>
                     <div class="card-footer">
                     </div>
                 </div>
             </form>
         </div>
+        <div class="collapse col-md-2 offset-md-1 mt-0" id="profileCollapse">
+            {{!--
+            <div class="card card-body">
+                <button class="dropdown-item routes" type="button">Signed in as {{userData.name}}</button>
+                <button class="dropdown-item routes" href="/profile">Your account</button>
+                <button class="dropdown-item routes" href="/bmi">Your body mass index</button>
+                <button class="dropdown-item routes" href="/workout">Your workouts</button>
+                <button class="dropdown-item routes" href="/">Log out</button>
+            </div> --}}
+        </div>
+    </div>
+</div>
 
 
 
@@ -34,4 +70,6 @@
     $("#userDropdown").css("display", "inline");
     $(".login").hide();
     $(".signUp").hide();
+   // $("#profileCollapse").show();
+
 </script>
