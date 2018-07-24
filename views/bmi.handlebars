@@ -1,7 +1,6 @@
  {{!-- Bmi calculator --}}
-<div class="container-fluid">
+<div class="container-fluid" id="bmiContainer">
     <div class="row">
-        <div class="col-md-4 offset-md-3 mt-5">
             <form class="bmiCalc" id="userCalcForm">
                 <div class="card ">
                     <div class="card-header">
@@ -48,18 +47,7 @@
                     </div>
                     <div class="card-footer">
                     </div>
-                </div>
             </form>
-        </div>
-        <div class="collapse col-md-2 offset-md-1 mt-0" id="profileCollapse">
-            {{!--
-            <div class="card card-body">
-                <button class="dropdown-item routes" type="button">Signed in as {{userData.name}}</button>
-                <button class="dropdown-item routes" href="/profile">Your account</button>
-                <button class="dropdown-item routes" href="/bmi">Your body mass index</button>
-                <button class="dropdown-item routes" href="/workout">Your workouts</button>
-                <button class="dropdown-item routes" href="/">Log out</button>
-            </div> --}}
         </div>
     </div>
 </div>

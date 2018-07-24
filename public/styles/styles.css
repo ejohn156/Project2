@@ -119,3 +119,13 @@ a:active {
 #userDropdown{
   margin-right: 15%
 }
+
+#userCalcForm {
+  width: 100%;
+}
+
+#bmiContainer {
+  margin-top: 3%;
+  margin-bottom: 10%;
+  width: 50%;
+}
