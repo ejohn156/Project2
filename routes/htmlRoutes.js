@@ -116,15 +116,15 @@ module.exports = function(app) {
   });
 
   app.get("/bmi", function(req, res) {
-    console.log(req.user.bmindex);
-    var firstName = req.user.name.split(" ", 1);
-    var user = {
-      userName: firstName,
-      email: req.user.email,
-      bmi: req.user.bmindex
-    };
-    res.render("bmi", user);
+    db.User.findOne({
+      where: 
+      {name: req.user.name}
+    }).then(function(userData){
+        console.log(userData.name)
+        console.log(userData.bmindex)
+        res.render("bmi", {userData: userData});
   });
+})
 
 
   // Here we've add our isAuthenticated middleware to this route.
