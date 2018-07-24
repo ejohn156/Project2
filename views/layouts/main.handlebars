@@ -45,7 +45,7 @@
 
         <!-- Default dropleft button -->
 
-      {{!-- <div class="btn-group dropleft" id="userDropdown">
+      <div class="btn-group dropleft" id="userDropdown">
         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          {{#if userData.name}}
           {{userData.name}}
@@ -61,10 +61,14 @@
           <button class="dropdown-item routes" href="/workouts/creator/{{userData.name}}">Your workouts</button>
           <button class="dropdown-item routes" href="/">Log out</button>
         </div>
-      </div> --}}
-<button class="btn btn-light" type="button" data-toggle="collapse" data-target="#profileCollapse" aria-expanded="false" aria-controls="collapseExample">
-    {{userName}}
-  </button>
+      </div>
+{{!-- <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#profileCollapse" aria-expanded="false" aria-controls="collapseExample">
+  {{#if userData.name}}
+    {{userData.name}}
+  {{else}}
+  profile
+  {{/if}}
+  </button> --}}
   </nav>
   <script>
     $("#userDropdown").hide();
@@ -85,8 +89,9 @@
     });
   $("homeBtn").click(function(){
     event.preventDefault()
-    location.replace("/profile")
+    location.replace("../profile")
     })
+    
   </script>
 </body>
 
