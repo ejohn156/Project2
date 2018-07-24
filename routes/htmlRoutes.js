@@ -28,11 +28,11 @@ module.exports = function(app) {
       where: 
       {name: req.user.name}
     }).then(function(userData){
-        console.log(userData.name)
-        console.log(userData.bmindex)
+        console.log(userData.name);
+        console.log(userData.bmindex);
         res.render("profile", {userData: userData});
         
-    })
+    });
     
   });
 
@@ -41,8 +41,16 @@ module.exports = function(app) {
       workoutData.forEach(function(element) {
         element.workoutString = caber.parse(element.workoutString);
       });
-      res.render("workoutList", { workoutData: workoutData });
+      db.User.findOne({
+        where: 
+        {name: req.user.name}
+      }).then(function(userData){
+        res.render("workoutList", { 
+          workoutData: workoutData,
+          userData: userData});
+      });
     });
+      
   });
 
   app.get("/workouts/type/:type", function(req, res) {
@@ -69,7 +77,7 @@ module.exports = function(app) {
         element.workoutString = caber.parse(element.workoutString);
       });
       console.log(workoutData[0]);
-      res.render("workoutList", { workoutData: workoutData });
+      res.render("workoutList", { workoutData: workoutData, userData: req.user });
     });
   });
 
@@ -86,6 +94,7 @@ module.exports = function(app) {
       res.render("workoutList", { workoutData: workoutData });
     });
   });
+
   app.get("/workouts/ind/:id", function(req, res) {
     console.log(req.params.id);
     db.Workouts.findOne({
@@ -120,11 +129,11 @@ module.exports = function(app) {
       where: 
       {name: req.user.name}
     }).then(function(userData){
-        console.log(userData.name)
-        console.log(userData.bmindex)
+        console.log(userData.name);
+        console.log(userData.bmindex);
         res.render("bmi", {userData: userData});
   });
-})
+});
 
 
   // Here we've add our isAuthenticated middleware to this route.
