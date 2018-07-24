@@ -45,7 +45,7 @@
 
         <!-- Default dropleft button -->
 
-      <div class="btn-group dropleft" id="userDropdown">
+      {{!-- <div class="btn-group dropleft" id="userDropdown">
         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{userName}}
         </button>
@@ -57,8 +57,10 @@
           <button class="dropdown-item routes" href="/workout">Your workouts</button>
           <button class="dropdown-item routes" href="/">Log out</button>
         </div>
-      </div>
-
+      </div> --}}
+<button class="btn btn-light" type="button" data-toggle="collapse" data-target="#profileCollapse" aria-expanded="false" aria-controls="collapseExample">
+    {{userName}}
+  </button>
   </nav>
   <script>
     $("#userDropdown").hide();
