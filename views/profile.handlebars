@@ -3,21 +3,45 @@
         <div class="col-md-3 offset-md-2">
             <div class="card">
                 <div class="card-header">
-                    <h4>
-                        <p>
+                    <h4 style="text-align: center">
+                        Profile Information
+                        {{!-- <p>
                             <button type="button" class="btn btn-sm btn-light editProfile" id="editProfile" data-toggle="modal" data-target="#myModal">Edit</button>
-                        </p>
+                        </p> --}}
                     </h4>
                 </div>
-                <div class="userStats">
-                    <p>Your BMI: {{bmi}}</p>
+                <div class="userStats" style="text-align: center">
+                    <h5>UserName: {{userData.name}}</h5>
+                    <h5>Email: {{userData.email}}</h5>
+
+                    {{#if userData.feet}}
+                    <h5>Height: {{userData.feet}}ft {{userData.inches}}in</h5>
+                    {{else}}
+                    <h5>Height: must calculate your bmi</h5>
+                    {{/if}}
+
+                    {{#if userData.weight}}
+                    <h5>Weight: {{userData.weight}}lb</h5>
+                    {{else}}
+                    <h5>Weight: must calculate your bmi</h5>
+                    {{/if}}
+
+                    {{#if userData.bmindex}}
+                    <h5>Your BMI: {{userData.bmindex}}</h5>
+                    {{else}}
+                    <h5>Weight: must calculate your bmi</h5>
+                    {{/if}}
+                    <br>
+                    <button type="button" class="btn btn-lg btn-light" style="width:90%;text-align:center;"id="update">Update</button>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3 offset-md-1">
+
             <div class="card">
                 <div class="card-header">
-                    <h4>
+                    <h4 style="text-align: center">
                         Workouts
                     </h4>
                 </div>
@@ -26,7 +50,7 @@
                 <br>
                 <button type="button" class="btn btn-lg btn-light" id="viewAll">View All Workouts</button>
                 <br>
-                <button type="button" class="btn btn-lg btn-light" id="viewMy" value={{userName}}>{{userName}}'s Workouts</button>
+                <button type="button" class="btn btn-lg btn-light" id="viewMy" value={{userData.name}}>{{userData.name}}'s Workouts</button>
                 <br>
             </div>
         </div>
@@ -84,11 +108,16 @@
     })
     $("#viewAll").click(function (event) {
         event.preventDefault()
-        location.replace("profile/workouts/all")
+        location.replace("/workouts/all")
     })
     $("#viewMy").click(function (event) {
         event.preventDefault()
         var name = $("#viewMy").val()
         location.replace("/workouts/creator/" + name)
+    })
+    $("#update").click(function(event){
+        event.preventDefault()
+        
+        location.replace("../bmi")
     })
 </script>

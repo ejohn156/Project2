@@ -44,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     // User Body Mass Index
     bmindex: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: true
     }
   });

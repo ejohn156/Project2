@@ -18,13 +18,22 @@ module.exports = function(app) {
   });
 
   app.get("/profile", function(req, res) {
-    var firstName = req.user.name.split(" ", 1);
+    // var firstName = req.user.name.split(" ", 1);
 
-    var user = {
-      userName: firstName,
-      email: req.user.email
-    };
-    res.render("profile", user);
+    // var user = {
+    //   userName: firstName,
+    //   email: req.user.email
+    // };
+    db.User.findOne({
+      where: 
+      {name: req.user.name}
+    }).then(function(userData){
+        console.log(userData.name)
+        console.log(userData.bmindex)
+        res.render("profile", {userData: userData});
+        
+    })
+    
   });
 
   app.get("/workouts/all", function(req, res) {
